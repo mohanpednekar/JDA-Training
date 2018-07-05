@@ -9,6 +9,7 @@
 
 package com.jda.utility;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Utility {
@@ -125,6 +126,13 @@ public class Utility {
 		return result;
 	}
 	
+	// finds the smallest prime factor of the number n
+	public int primefactor(int n) {
+		for (int i = 2; i * i <= n; i++)
+			if (n % i == 0) return i;
+		return n;
+	}
+	
 	public void print(String string) {
 		System.out.print(string);
 	}
@@ -167,6 +175,14 @@ public class Utility {
 		// when n is negative
 		System.out.println("The value given is not a positive integer");
 		return -1;
+	}
+
+	public StringBuilder toStringBuilder(ArrayList<Integer> nums) {
+		StringBuilder sb = new StringBuilder();
+		if (nums.size() > 0) sb.append(nums.get(0));
+		for (int i = 1; i < nums.size(); i++)
+			sb.append(", ").append(nums.get(i));
+		return sb;
 	}
 	
 }
