@@ -26,7 +26,7 @@ public class CoinFlipping{
 		//	run the experiment of flipping coin n times
 		CoinFlip experiment=utility.new CoinFlip(nCoinFlips);
 		
-		//	find the percentage of Heads
+		//	find the percentage of Heads in the experiment
 		float percentageHeads=experiment.percentageOfHeads();
 		
 		//	print result
