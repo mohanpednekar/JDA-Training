@@ -23,6 +23,13 @@ class Utility {
 		scanner = new Scanner(System.in);
 	}
 
+	public static
+	double euclideanDistance(double x1, double y1, double x2, double y2) {
+		double dx = x1 - x2;
+		double dy = y1 - y2;
+		return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+	}
+
 	/**
 	 * @param stake the amount at stake each day
 	 * @param goal  the desired winning amount each day
