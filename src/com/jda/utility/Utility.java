@@ -9,7 +9,7 @@
 
 package com.jda.utility;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Scanner;
 
 public
@@ -121,6 +121,7 @@ class Utility {
 		return scanner.nextInt();
 	}
 
+/*
 	// reads a line from input stream delimited by newline characters
 	public
 	String readLine() {
@@ -138,6 +139,7 @@ class Utility {
 	String readString() {
 		return scanner.next();
 	}
+*/
 
 	// converts a string into positive integer if possible, otherwise returns -1
 	public
@@ -157,12 +159,30 @@ class Utility {
 	}
 
 	public
-	StringBuilder toStringBuilder(ArrayList<Integer> nums) {
+	StringBuilder toStringBuilder(Collection<Integer> collection) {
 		StringBuilder sb = new StringBuilder();
-		if (nums.size() > 0) sb.append(nums.get(0));
-		for (int i = 1; i < nums.size(); i++)
-			sb.append(", ").append(nums.get(i));
+		collection.forEach(item -> sb.append(item).append(" "));
 		return sb;
+	}
+
+	public
+	int[][] readIntegerArray(int rows, int columns) {
+		int[][] array = new int[rows][columns];
+		for (int i = 0; i < rows; i++)
+			for (int j = 0; j < columns; j++) array[i][j] = scanner.nextInt();
+		return array;
+	}
+
+	public
+	void printArray(int[][] array, int rows, int columns) {
+		//TODO print
+	}
+
+	public
+	int[] readIntegerArray(int size) {
+		int[] array = new int[size];
+		for (int i = 0; i < size; i++) array[i] = scanner.nextInt();
+		return array;
 	}
 
 	// defines an enum for the only two possibilities of coin faces
