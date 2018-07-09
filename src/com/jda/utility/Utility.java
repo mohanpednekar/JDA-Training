@@ -104,12 +104,13 @@ class Utility {
 		return result;
 	}
 
-	// finds the smallest prime factor of the number n
-	public
-	int primefactor(int n) {
-		for (int i = 2; i * i <= n; i++)
-			if (n % i == 0) return i;
-		return n;
+	public static
+	<T> void printArray(T[][] array, int rows, int columns) {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < columns; j++) System.out.print(array);
+			System.out.println();
+		}
+		//TODO print
 	}
 
 	public
@@ -185,16 +186,21 @@ class Utility {
 		return scanner.next();
 	}
 
+	// finds the smallest prime factor of the number n
 	public
-	int[] readIntegerArray(int size) {
-		int[] array = new int[size];
-		for (int i = 0; i < size; i++) array[i] = scanner.nextInt();
-		return array;
+	int primeFactor(int n) {
+		for (int i = 2; i * i <= n; i++)
+			if (n % i == 0) return i;
+		return n;
 	}
 
 	public
-	void printArray(int[][] array, int rows, int columns) {
-		//TODO print
+	int[] readIntegerArray(int size) {
+		int[] array = new int[size];
+		for (int i = 0; i < size; i++) {
+			array[i] = scanner.nextInt();
+		}
+		return array;
 	}
 
 	// defines an enum for the only two possibilities of coin faces
@@ -248,7 +254,6 @@ class Utility {
 			if (randomNumber < 0.5) return CoinFace.HEAD.toss();
 			/* else */
 			return CoinFace.TAIL.toss();
-
 		}
 
 		// finds percentage of of heads out of the total coinflips
@@ -257,7 +262,5 @@ class Utility {
 			float percentage = CoinFace.HEAD.frequency() / (float) nCoinFlips;
 			return percentage * 100;
 		}
-
 	}
-
 }

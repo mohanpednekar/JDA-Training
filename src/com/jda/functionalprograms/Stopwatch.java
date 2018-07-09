@@ -8,7 +8,7 @@ class Stopwatch {
 	void main(String[] args) {
 		Utility utility = new Utility();
 		long start = System.currentTimeMillis();
-		doNothing(10e6);
+		doNothing(10e7);
 		long end = System.currentTimeMillis();
 		utility.printLine("Watch started at " + start);
 		utility.printLine("Watch stopped at " + end);

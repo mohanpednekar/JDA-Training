@@ -7,9 +7,9 @@
  *******************************************************************/
 package com.jda.functionalprograms;
 
-import java.util.ArrayList;
-
 import com.jda.utility.Utility;
+
+import java.util.ArrayList;
 
 public class Factors {
 	
@@ -21,7 +21,7 @@ public class Factors {
 		ArrayList<Integer> factors = new ArrayList<>();
 		int temp = n;
 		while (temp > 1) {
-			int f = utility.primefactor(temp);
+			int f = utility.primeFactor(temp);
 			factors.add(f);
 			temp = temp / f;
 		}
