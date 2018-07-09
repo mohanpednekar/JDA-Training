@@ -128,25 +128,11 @@ class Utility {
 		return scanner.nextInt();
 	}
 
-/*
-	// reads a line from input stream delimited by newline characters
-	public
-	String readLine() {
-		return scanner.nextLine();
+	public static
+	int factorial(int length) {
+		if (length == 0) return 1;
+		return length * factorial(length - 1);
 	}
-
-	// reads a real number (double) from input stream
-	public
-	double readReal() {
-		return scanner.nextDouble();
-	}
-
-	// reads a string from input stream delimited by any whitespace
-	public
-	String readString() {
-		return scanner.next();
-	}
-*/
 
 	// converts a string into positive integer if possible, otherwise returns -1
 	public
@@ -180,9 +166,23 @@ class Utility {
 		return array;
 	}
 
+	/*
+		// reads a line from input stream delimited by newline characters
+		public
+		String readLine() {
+			return scanner.nextLine();
+		}
+
+		// reads a real number (double) from input stream
+		public
+		double readReal() {
+			return scanner.nextDouble();
+		}
+	*/
+	// reads a string from input stream delimited by any whitespace
 	public
-	void printArray(int[][] array, int rows, int columns) {
-		//TODO print
+	String readString() {
+		return scanner.next();
 	}
 
 	public
@@ -190,6 +190,11 @@ class Utility {
 		int[] array = new int[size];
 		for (int i = 0; i < size; i++) array[i] = scanner.nextInt();
 		return array;
+	}
+
+	public
+	void printArray(int[][] array, int rows, int columns) {
+		//TODO print
 	}
 
 	// defines an enum for the only two possibilities of coin faces
