@@ -13,6 +13,29 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Util {
+	
+	public static class Stopwatch {
+		private long	begin;
+		private long	end;
+		
+		public Stopwatch() {
+			begin = 0;
+			end = 0;
+		}
+		
+		public long elapsedTimeMillis() {
+			return end - begin;
+		}
+		
+		public void start() {
+			begin = System.currentTimeMillis();
+		}
+		
+		public void stop() {
+			end = System.currentTimeMillis();
+		}
+	}
+
 	/**
 	 * checks whether the given strings can be formed by rearranging the letters
 	 * in each other
@@ -27,13 +50,13 @@ public class Util {
 		Collections.sort(s2);
 		return s1.equals(s2);
 	}
-	
+
 	public static boolean isPalindrome(String string) {
 		String original = string.replace("\\s", "").toLowerCase();
 		String reversed = new StringBuilder(original).reverse().toString();
 		return original.equals(reversed);
 	}
-	
+
 	/**
 	 * @param maxPrime
 	 *            the limit for the largest prime number to find
@@ -51,7 +74,7 @@ public class Util {
 		}
 		return primes;
 	}
-
+	
 	/**
 	 * @param string1
 	 * @return list of all the characters (in lowercase) present in the string

@@ -8,15 +8,24 @@
 package com.jda.algorithm_programs;
 
 import com.jda.utility.Util;
+import com.jda.utility.Utility;
 
 public class Anagrams {
 	public static void main(String[] args) {
-		String string1 = "He h art";
-		String string2 = "ea hrth";
+		Utility utility = new Utility();
+		System.out.println("Enter first string");
 
-		if (Util.areAnagrams(string1, string2)) System.out.println("Anagrams");
-		else
+		String string1 = utility.readString();
+		
+		System.out.println("Enter second string");
+
+		String string2 = utility.readString();
+
+		if (Util.areAnagrams(string1, string2)) {
+			System.out.println("Anagrams");
+		} else {
 			System.out.println("Not Anagrams");
+		}
 	}
 	
 }
