@@ -192,6 +192,15 @@ public class Utility {
 		System.out.println(string);
 	}
 	
+	/**
+	 * @param positive
+	 * @param negative
+	 * @return
+	 */
+	public boolean readBoolean(String positive, String negative) {
+		return scanner.next().toLowerCase().startsWith(positive);
+	}
+	
 	// reads an integer from input stream
 	public int readInteger() {
 		return scanner.nextInt();
@@ -241,7 +250,7 @@ public class Utility {
 		System.out.println("The value given is not a positive integer");
 		return -1;
 	}
-	
+
 	public StringBuilder toStringBuilder(Collection<Integer> collection) {
 		StringBuilder sb = new StringBuilder();
 		collection.forEach(item -> sb.append(item).append(" "));
