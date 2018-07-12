@@ -13,40 +13,40 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Util {
-
+	
 	public static class Stopwatch {
 		private long	begin;
 		private long	end;
-
+		
 		public Stopwatch() {
 			begin = 0;
 			end = 0;
 		}
-
+		
 		public long elapsedTimeNanos() {
 			return end - begin;
 		}
-		
+
 		public double elapsedTimeSeconds() {
 			return elapsedTimeNanos() * 1e-9;
 		}
-
+		
 		public void start() {
 			begin = System.nanoTime();
 		}
-
+		
 		public void stop() {
 			end = System.nanoTime();
 		}
 	}
-	
+
 	/**
 	 * checks whether the given strings can be formed by rearranging the letters
 	 * in each other
 	 *
 	 * @return
 	 */
-	
+
 	public static boolean areAnagrams(String string1, String string2) {
 		List<Character> s1 = stringToCharacterList(string1);
 		List<Character> s2 = stringToCharacterList(string2);
@@ -54,7 +54,7 @@ public class Util {
 		Collections.sort(s2);
 		return s1.equals(s2);
 	}
-	
+
 	/**
 	 * @param items
 	 * @return
@@ -84,7 +84,7 @@ public class Util {
 		if (t.getClass().toString().endsWith("String")) return ((String) t).compareToIgnoreCase((String) t2);
 		return 0;
 	}
-	
+
 	/**
 	 * @param i
 	 * @param j
@@ -111,13 +111,13 @@ public class Util {
 		boolean correctGuess = utility.readBoolean("y", "n");
 		return correctGuess ? guess(low, mid, n - 1) : guess(mid + 1, high, n - 1);
 	}
-	
+
 	public static boolean isPalindrome(String string) {
 		String original = string.replace("\\s", "").toLowerCase();
 		String reversed = new StringBuilder(original).reverse().toString();
 		return original.equals(reversed);
 	}
-	
+
 	/**
 	 * @param n
 	 * @return
@@ -125,7 +125,25 @@ public class Util {
 	public static int log2(int n) {
 		return 32 - Integer.numberOfLeadingZeros(n);
 	}
-	
+
+	public static <T> ArrayList<T> mergeSort(List<T> list) {
+		int n = list.size();
+		if (n < 2) return (ArrayList<T>) list;
+		ArrayList<T> sorted = new ArrayList<>();
+		ArrayList<T> part1 = mergeSort(list.subList(0, n / 2));
+		ArrayList<T> part2 = mergeSort(list.subList(n / 2 + 1, n));
+		while (!part1.isEmpty() && !part2.isEmpty()) {
+			if (compare(part1.get(0), part2.get(0)) < 0) {
+				sorted.add(part1.remove(0));
+			} else {
+				sorted.add(part2.remove(0));
+			}
+		}
+		sorted.addAll(part1);
+		sorted.addAll(part2);
+		return sorted;
+	}
+
 	/**
 	 * @param maxPrime
 	 *            the limit for the largest prime number to find
@@ -144,7 +162,7 @@ public class Util {
 		}
 		return primes;
 	}
-	
+
 	/**
 	 * @param string1
 	 * @return list of all the characters (in lowercase) present in the string
