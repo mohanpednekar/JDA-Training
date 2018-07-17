@@ -16,7 +16,7 @@ public class Windchill {
 		if (Math.abs(t) > 50) {
 			System.out.println("Wind chill formula doesn't work for the given temperature");
 		}
-		if (v > 120 || v < 3) {
+		if ((v > 120) || (v < 3)) {
 			System.out.println("Wind chill formula doesn't work for the given wind velocity");
 		}
 		double w = windChill(t, v);
@@ -31,7 +31,7 @@ public class Windchill {
 	 * @return the effective temperature due to wind chill effect
 	 */
 	private static double windChill(double t, double v) {
-		return 35.74 + 0.6215 * t + (0.4275 * t - 35.75) * Math.pow(v, 0.16);
+		return 35.74 + (0.6215 * t) + (((0.4275 * t) - 35.75) * Math.pow(v, 0.16));
 	}
 
 }

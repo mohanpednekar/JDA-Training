@@ -7,12 +7,11 @@
  *******************************************************************/
 package com.jda.algorithm_programs;
 
+import com.jda.utility.Util;
 import java.util.ArrayList;
 
-import com.jda.utility.Util;
-
 public class PrimeAnagramsPalindromes {
-	
+
 	/**
 	 * @param args
 	 */
@@ -31,5 +30,4 @@ public class PrimeAnagramsPalindromes {
 				    System.out.print(prime1 + " and " + prime2 + " \t");
 			}
 	}
-	
 }
