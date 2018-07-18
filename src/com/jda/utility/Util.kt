@@ -38,7 +38,7 @@ object Util {
      * @return list of all the characters (in lowercase) present in the string excluding whitespace
      */
     private fun stringToCharacterList(string1: String): List<Char> {
-        return string1.replace("\\s".toRegex(), "").toLowerCase().chars().mapToObj({ c -> c.toChar() }).collect(Collectors.toList<Char>())
+        return string1.replace("\\s".toRegex(), "").toLowerCase().chars().mapToObj { c -> c.toChar() }.collect(Collectors.toList<Char>())
     }
 
     fun guess(low: Int, high: Int, n: Int): Int {
