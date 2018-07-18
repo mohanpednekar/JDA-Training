@@ -7,18 +7,32 @@
  *******************************************************************/
 package com.jda.utility;
 
+import com.jda.utility.Utility.Reader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public
 class Util {
 
+  public static
+  ArrayList<Integer> notesNeededToMake(int money, HashSet<Integer> denominations) {
+    TreeSet<Integer> sortedDenominations = new TreeSet<>();
+    sortedDenominations.addAll(denominations);
+    ArrayList<Integer> notes = new ArrayList<>();
+    while (money > 0) {
+      int note = sortedDenominations.last();
+    }
+
+    return notes;
+  }
+
   /**
    * checks whether the given strings can be formed by rearranging the letters in each other
    */
-
   public static
   boolean areAnagrams(String string1, String string2) {
     List<Character> s1 = stringToCharacterList(string1);
@@ -58,8 +72,8 @@ class Util {
     }
     query.append("?");
     System.out.println(query);
-    Utility utility = new Utility();
-    boolean correctGuess = utility.readBoolean("y", "n");
+    Reader reader = new Utility().new Reader();
+    boolean correctGuess = reader.readBoolean("y", "n");
     return correctGuess ? guess(low, mid, n - 1) : guess(mid + 1, high, n - 1);
   }
 
@@ -182,7 +196,6 @@ class Util {
     }
     return output.toString();
   }
-
 
   public
   enum TemperatureUnit {

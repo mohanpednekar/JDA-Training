@@ -1,38 +1,39 @@
 package com.jda.functionalprograms;
 
+import com.jda.utility.Utility;
+import com.jda.utility.Utility.Reader;
 import java.util.HashSet;
 
-import com.jda.utility.Utility;
-
 public class StringPermutations {
-	private static HashSet<String> iterativelyPermute(String string) {
-		HashSet<String> permuted = new HashSet<>();
-		
-		char[] letters = string.toCharArray();
-		int n = string.length();
-		for (int i = 0; i < n; i++) {
-			
-		}
-		return permuted;
-	}
-	
 	public static void main(String[] args) {
-		Utility utility = new Utility();
-		utility.printLine("Enter a string to permute");
-		String string = utility.readString();
-		
+		Reader reader = new Utility().new Reader();
+		Utility.printLine("Enter a string to permute");
+		String string = reader.readString();
+
 		HashSet<String> iteratedPermutations = iterativelyPermute(string);
 		iteratedPermutations.forEach(System.out::println);
 		HashSet<String> recursivePermutations = recursivelyPermute(string);
 		recursivePermutations.forEach(System.out::println);
 		System.out.println("The number of recursive permutations is " + recursivePermutations.size());
 	}
-	
+
+	private static
+	HashSet<String> iterativelyPermute(String string) {
+		HashSet<String> permuted = new HashSet<>();
+
+		char[] letters = string.toCharArray();
+		int n = string.length();
+		for (int i = 0; i < n; i++) {
+
+		}
+		return permuted;
+	}
+
 	private static HashSet<String> recursivelyPermute(String string) {
 		int n = string.length();
 		return recursivelyPermute(string, 0, n - 1);
 	}
-	
+
 	private static HashSet<String> recursivelyPermute(String string, int left, int right) {
 		HashSet<String> permuted = new HashSet<>();
 		if (left == right) {
@@ -42,7 +43,7 @@ public class StringPermutations {
 		}
 		return permuted;
 	}
-	
+
 	private static void swapAndRecursivelyPermute(String string, int left, int right, HashSet<String> permuted) {
 		for (int i = left; i <= right; i++) {
 			string = swapped(string, i, left);
@@ -50,7 +51,7 @@ public class StringPermutations {
 			string = swapped(string, i, left);
 		}
 	}
-	
+
 	private static String swapped(String string, int i, int j) {
 		char[] letters = string.toCharArray();
 		char temp = letters[i];

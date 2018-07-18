@@ -9,45 +9,44 @@ package com.jda.algorithm_programs;
 
 import com.jda.utility.Util.Stopwatch;
 import com.jda.utility.Utility;
+import com.jda.utility.Utility.Reader;
 import com.jda.utility.Utility.Sorting;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 
 public
-class SearchAndSort<T1> implements Comparator<T1> {
+class SearchAndSort {
 
   public static
   void main(String[] args) {
-    Utility utility = new Utility();
-    SearchAndSort programs = new SearchAndSort<>();
-    utility.printLine("What do you want to enter?");
-    utility.printLine("s : Strings \t i : Integers");
-    char ch = utility.readString().toLowerCase().charAt(0);
-    utility.printLine("How many of them?");
-    int n = utility.readInteger();
+    Reader reader = new Utility().new Reader();
+    SearchAndSort programs = new SearchAndSort();
+    Utility.printLine("What do you want to enter?");
+    Utility.printLine("s : Strings \t i : Integers");
+    char ch = reader.readString().toLowerCase().charAt(0);
+    Utility.printLine("How many of them?");
+    int n = reader.readInteger();
 
     switch (ch) {
       case 's':
         ArrayList<String> strings = new ArrayList<>();
-        utility.printLine("Enter " + n + " strings");
+        Utility.printLine("Enter " + n + " strings");
 
         for (int i = 0; i < n; i++) {
-          strings.add(utility.readString());
+          strings.add(reader.readString());
         }
-        utility.printLine("What do you want to search for?");
-        String stringToSearch = utility.readString();
+        Utility.printLine("What do you want to search for?");
+        String stringToSearch = reader.readString();
         programs.searchAndSort(strings, stringToSearch);
         break;
       case 'i':
         ArrayList<Integer> integers = new ArrayList<>();
-        utility.printLine("Enter " + n + " integers");
+        Utility.printLine("Enter " + n + " integers");
         for (int i = 0; i < n; i++) {
-          integers.add(utility.readInteger());
+          integers.add(reader.readInteger());
         }
-        utility.printLine("What do you want to search for?");
-        Integer integerToSearch = utility.readInteger();
+        Utility.printLine("What do you want to search for?");
+        Integer integerToSearch = reader.readInteger();
         programs.searchAndSort(integers, integerToSearch);
         break;
       default:
@@ -58,7 +57,7 @@ class SearchAndSort<T1> implements Comparator<T1> {
    * @param items
    */
   private
-  <T> void searchAndSort(ArrayList<T> items, T itemToSearch) {
+  <T extends Comparable<T>> void searchAndSort(ArrayList<T> items, T itemToSearch) {
 
     Watcher.BINARY.start();
     boolean found = binarySearch(items, itemToSearch);
@@ -66,7 +65,7 @@ class SearchAndSort<T1> implements Comparator<T1> {
     System.out.println("found = " + found);
 
     Watcher.INSERTION.start();
-    ArrayList<T> insertionSorted = insertionSort(items);
+    ArrayList<T> insertionSorted = Sorting.insertionSort(items);
     Watcher.INSERTION.stop();
     System.out.println(insertionSorted);
 
@@ -89,44 +88,10 @@ class SearchAndSort<T1> implements Comparator<T1> {
    * @return
    */
   private
-  <T> boolean binarySearch(ArrayList<T> items, T itemToSearch) {
+  <T extends Comparable<T>> boolean binarySearch(ArrayList<T> items, T itemToSearch) {
     BST tree = new BST(items.get(0));
     items.forEach(tree::insert);
     return tree.has(itemToSearch);
-  }
-
-  /**
-   * @param items
-   * @return
-   */
-  private
-  <T> ArrayList<T> insertionSort(ArrayList<T> items) {
-    int n = items.size();
-    for (int i = 0; i < n; i++) {
-      for (int j = i; j > 0; j--) {
-        T1 i1 = (T1) items.get(j - 1);
-        T1 i2 = (T1) items.get(j);
-        if (compare(i1, i2) > 0) {
-          Collections.swap(items, j - 1, j);
-        }
-      }
-    }
-    return items;
-  }  /*
-   * (non-Javadoc)
-   * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
-   */
-
-  @Override
-  public
-  int compare(T1 t, T1 t2) {
-    if (t.getClass().toString().endsWith("Integer")) {
-      return ((Integer) t).compareTo((Integer) t2);
-    }
-    if (t.getClass().toString().endsWith("String")) {
-      return ((String) t).compareToIgnoreCase((String) t2);
-    }
-    return 0;
   }
 
   enum Watcher {
@@ -165,7 +130,7 @@ class SearchAndSort<T1> implements Comparator<T1> {
   }
 
   public
-  class BST<T> implements Comparator<T> {
+  class BST<T extends Comparable<T>> {
 
     T value;
     BST left;
@@ -179,27 +144,27 @@ class SearchAndSort<T1> implements Comparator<T1> {
      * (non-Javadoc)
      * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
      */
-    @Override
-    public
-    int compare(T o1, T o2) {
-      if (o1.getClass().toString().endsWith("Integer")) {
-        return ((Integer) o1).compareTo((Integer) o2);
-      }
-      if (o1.getClass().toString().endsWith("String")) {
-        return ((String) o1).compareToIgnoreCase((String) o2);
-      }
-      return 0;
-    }
+//    @Override
+//    public
+//    int compare(T o1, T o2) {
+//      if (o1.getClass().toString().endsWith("Integer")) {
+//        return ((Integer) o1).compareTo((Integer) o2);
+//      }
+//      if (o1.getClass().toString().endsWith("String")) {
+//        return ((String) o1).compareToIgnoreCase((String) o2);
+//      }
+//      return 0;
+//    }
 
     public
     boolean has(T value) {
-      if (compare(value, this.value) == 0) {
+      if (value.compareTo(this.value) == 0) {
         return true;
       }
-      if (compare(value, this.value) < 0 && null != left) {
+      if ((value.compareTo(this.value) < 0) && (null != left)) {
         return left.has(value);
       }
-      if (compare(value, this.value) > 0 && null != right) {
+      if ((value.compareTo(this.value) > 0) && (null != right)) {
         return right.has(value);
       }
       return false;
@@ -207,7 +172,7 @@ class SearchAndSort<T1> implements Comparator<T1> {
 
     public
     void insert(T value) {
-      if (compare(value, this.value) <= 0) {
+      if (value.compareTo(this.value) <= 0) {
         if (null == left) {
           left = new BST(value);
         } else {
@@ -220,6 +185,4 @@ class SearchAndSort<T1> implements Comparator<T1> {
       }
     }
   }
-
-
 }

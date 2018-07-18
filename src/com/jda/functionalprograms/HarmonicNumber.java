@@ -9,16 +9,18 @@
 package com.jda.functionalprograms;
 
 import com.jda.utility.Utility;
+import com.jda.utility.Utility.Reader;
 
-public class HarmonicNumber {
-	
-	public static void main(String[] args) {
-		Utility utility = new Utility();
-		utility.printLine("Which harmonic number do you wath to find?");
-		int n = utility.readInteger();
-		if (n < 1) utility.printLine("Enter a positive number");
-		double result = utility.harmonicNumber(n);
-		utility.printLine("The " + utility.ordinal(n) + " harmonic number is " + result);
-	}
-	
+public
+class HarmonicNumber {
+
+  public static
+  void main(String[] args) {
+    Reader reader = new Utility().new Reader();
+    Utility.printLine("Which harmonic number do you wath to find?");
+    int n = reader.readInteger();
+    if (n < 1) { Utility.printLine("Enter a positive number"); }
+    double result = Utility.harmonicNumber(n);
+    Utility.printLine("The " + Utility.ordinal(n) + " harmonic number is " + result);
+  }
 }

@@ -9,17 +9,18 @@ package com.jda.algorithm_programs;
 
 import com.jda.utility.Util;
 import com.jda.utility.Utility;
+import com.jda.utility.Utility.Reader;
 
 public class Anagrams {
 	public static void main(String[] args) {
-		Utility utility = new Utility();
+    Reader reader = new Utility().new Reader();
 		System.out.println("Enter first string");
 
-		String string1 = utility.readString();
-		
+    String string1 = reader.readString();
+
 		System.out.println("Enter second string");
 
-		String string2 = utility.readString();
+    String string2 = reader.readString();
 
 		if (Util.areAnagrams(string1, string2)) {
 			System.out.println("Anagrams");
@@ -27,5 +28,4 @@ public class Anagrams {
 			System.out.println("Not Anagrams");
 		}
 	}
-	
 }

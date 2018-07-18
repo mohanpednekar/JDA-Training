@@ -20,14 +20,6 @@ import java.util.Scanner;
 public
 class Utility {
 
-  private Scanner scanner;
-
-  public
-  Utility() {
-    // scanner initialization for all the input
-    scanner = new Scanner(System.in);
-  }
-
   public static
   HashSet<ComplexNumber> findRoots(double a, double b, double c) {
     HashSet<ComplexNumber> roots = new HashSet<>();
@@ -79,13 +71,8 @@ class Utility {
     // TODO print
   }
 
-  public
-  double readDouble() {
-    return scanner.nextDouble();
-  }
-
   // checks whether the number of arguments is n
-  public
+  public static
   boolean checkCmdArgs(String[] args, int n) {
     if (args.length < n) {
       System.out
@@ -104,10 +91,10 @@ class Utility {
    * @param bet the amount betted per play
    * @return whether the goal amount was won or lost
    */
-  public
+  public static
   Result gamble(int stake, int goal, int bet) {
     int balance = stake;
-    CoinFlip coinFlip = new CoinFlip(0);
+    CoinFlip coinFlip = new Utility().new CoinFlip(0);
     while (true) {
       if (coinFlip.flipACoin() == CoinFace.HEAD) {
         balance += bet;
@@ -127,7 +114,7 @@ class Utility {
    * @param n the order of Harmonic number desired
    * @return the nth harmonic number
    */
-  public
+  public static
   double harmonicNumber(int n) {
 
     double result = 0;
@@ -138,7 +125,7 @@ class Utility {
   }
 
   // checks whether the year provided is leap year or not
-  public
+  public static
   boolean isLeapYear(int year) {
     if (year % 4 != 0) {
       return false; // year not divisible by 4 is not leap
@@ -150,7 +137,7 @@ class Utility {
   }
 
   // appends an ordinal suffix to the number
-  public
+  public static
   String ordinal(int n) {
     if (n % 100 > 10 && n % 100 < 20) {
       return n + "th";
@@ -168,7 +155,7 @@ class Utility {
   }
 
   // calculates x^n for non-negative n;
-  public
+  public static
   int power(int x, int n) {
     int result = 1;
     for (int i = 0; i < n; i++) {
@@ -178,7 +165,7 @@ class Utility {
   }
 
   // finds the smallest prime factor of the number n
-  public
+  public static
   int primeFactor(int n) {
     for (int i = 2; i * i <= n; i++) {
       if (n % i == 0) {
@@ -188,66 +175,18 @@ class Utility {
     return n;
   }
 
-  public
+  public static
   void print(String string) {
     System.out.print(string);
   }
 
-  public
+  public static
   void printLine(String string) {
     System.out.println(string);
   }
 
-  /**
-   * @param positive
-   * @param negative
-   * @return
-   */
-  public
-  boolean readBoolean(String positive, String negative) {
-    return scanner.next().toLowerCase().startsWith(positive);
-  }
-
-  // reads an integer from input stream
-  public
-  int readInteger() {
-    return scanner.nextInt();
-  }
-
-  public
-  int[] readIntegerArray(int size) {
-    int[] array = new int[size];
-    for (int i = 0; i < size; i++) {
-      array[i] = scanner.nextInt();
-    }
-    return array;
-  }
-
-  public
-  int[][] readIntegerArray(int rows, int columns) {
-    int[][] array = new int[rows][columns];
-    for (int i = 0; i < rows; i++) {
-      for (int j = 0; j < columns; j++) {
-        array[i][j] = scanner.nextInt();
-      }
-    }
-    return array;
-  }
-
-  /*
-   * // reads a line from input stream delimited by newline characters public
-   * String readLine() { return scanner.nextLine(); } // reads a real number
-   * (double) from input stream public double readReal() { return
-   * scanner.nextDouble(); }
-   */
-  // reads a string from input stream delimited by any whitespace
-  public
-  String readString() {
-    return scanner.next();
-  }
-
   // converts a string into positive integer if possible, otherwise returns -1
-  public
+  public static
   int stringToPositiveInteger(String string) {
     int n;
     try {
@@ -265,11 +204,11 @@ class Utility {
     return -1;
   }
 
-  public
-  StringBuilder toStringBuilder(Collection<Integer> collection) {
+  public static
+  String toString(Collection<Integer> collection) {
     StringBuilder sb = new StringBuilder();
     collection.forEach(item -> sb.append(item).append(" "));
-    return sb;
+    return sb.toString();
   }
 
   // defines an enum for the only two possibilities of coin faces
@@ -309,38 +248,36 @@ class Utility {
   class Sorting {
 
     /**
-     * @param items
-     * @return
+     * Performs bubble sort
      */
     public static
-    <T> ArrayList<T> bubbleSort(ArrayList<T> items) {
-      ArrayList<T> sorted = items;
-      int n = sorted.size();
+    <T extends Comparable<T>> ArrayList<T> bubbleSort(ArrayList<T> items) {
+      int n = items.size();
       for (int i = 0; i < (n - 1); i++) {
         for (int j = 0; j < (n - 1); j++) {
-          T input = sorted.get(j);
-          T input2 = sorted.get(j + 1);
-          if (0 < compare(input, input2)) {
-            Collections.swap(sorted, j, j + 1);
+          T input = items.get(j);
+          T input2 = items.get(j + 1);
+          if (input.compareTo(input2) > 0) {
+            Collections.swap(items, j, j + 1);
           }
         }
       }
-      return sorted;
+      return items;
     }
 
-    static
-    <T> int compare(T t, T t2) {
-      if (t.getClass().toString().endsWith("Integer")) {
-        return ((Integer) t).compareTo((Integer) t2);
-      }
-      if (t.getClass().toString().endsWith("String")) {
-        return ((String) t).compareToIgnoreCase((String) t2);
-      }
-      return 0;
-    }
+//    static
+//    <T> int compare(T t, T t2) {
+//      if (t.getClass().toString().endsWith("Integer")) {
+//        return ((Integer) t).compareTo((Integer) t2);
+//      }
+//      if (t.getClass().toString().endsWith("String")) {
+//        return ((String) t).compareToIgnoreCase((String) t2);
+//      }
+//      return 0;
+//    }
 
     public static
-    <T> ArrayList<T> mergeSort(List<T> list) {
+    <T extends Comparable<T>> ArrayList<T> mergeSort(List<T> list) {
       int n = list.size();
       if (2 > n) {
         return (ArrayList<T>) list;
@@ -349,7 +286,7 @@ class Utility {
       ArrayList<T> part1 = mergeSort(list.subList(0, n / 2));
       ArrayList<T> part2 = mergeSort(list.subList((n / 2) + 1, n));
       while (!part1.isEmpty() && !part2.isEmpty()) {
-        if (0 > compare(part1.get(0), part2.get(0))) {
+        if (part1.get(0).compareTo(part2.get(0)) < 0) {
           sorted.add(part1.remove(0));
         } else {
           sorted.add(part2.remove(0));
@@ -359,6 +296,28 @@ class Utility {
       sorted.addAll(part2);
       return sorted;
     }
+
+    /**
+     * @param items
+     * @return
+     */
+    public static
+    <T extends Comparable<T>> ArrayList<T> insertionSort(ArrayList<T> items) {
+      int n = items.size();
+      for (int i = 0; i < n; i++) {
+        for (int j = i; j > 0; j--) {
+          T i1 = items.get(j - 1);
+          T i2 = items.get(j);
+          if (i1.compareTo(i2) > 0) {
+            Collections.swap(items, j - 1, j);
+          }
+        }
+      }
+      return items;
+    }  /*
+     * (non-Javadoc)
+     * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+     */
   }
 
   public static
@@ -389,8 +348,8 @@ class Utility {
         return false;
       }
       ComplexNumber that = (ComplexNumber) o;
-      return (Double.compare(that.real, real) == 0) &&
-          (Double.compare(that.imaginary, imaginary) == 0);
+      return (Double.compare(that.real, real) == 0) && (Double.compare(that.imaginary, imaginary)
+          == 0);
     }
 
     @Override
@@ -408,6 +367,70 @@ class Utility {
         stringBuilder.append(0);
       }
       return stringBuilder.toString();
+    }
+  }
+
+  public
+  class Reader {
+
+    private Scanner scanner;
+
+    public
+    Reader() {
+      scanner = new Scanner(System.in);
+    }
+
+    public
+    double readDouble() {
+      return scanner.nextDouble();
+    }
+
+    /**
+     * @param positive
+     * @param negative
+     * @return
+     */
+    public
+    boolean readBoolean(String positive, String negative) {
+      return scanner.next().toLowerCase().startsWith(positive);
+    }
+
+    // reads an integer from input stream
+    public
+    int readInteger() {
+      return scanner.nextInt();
+    }
+
+    public
+    int[] readIntegerArray(int size) {
+      int[] array = new int[size];
+      for (int i = 0; i < size; i++) {
+        array[i] = scanner.nextInt();
+      }
+      return array;
+    }
+
+    public
+    int[][] readIntegerArray(int rows, int columns) {
+      int[][] array = new int[rows][columns];
+      for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+          array[i][j] = scanner.nextInt();
+        }
+      }
+      return array;
+    }
+
+    /*
+     * // reads a line from input stream delimited by newline characters public
+     * String readLine() { return scanner.nextLine(); } // reads a real number
+     * (double) from input stream public double readReal() { return
+     * scanner.nextDouble(); }
+     */
+    // reads a string from input stream delimited by any whitespace
+    public
+    String readString() {
+      return scanner.next();
     }
   }
 
