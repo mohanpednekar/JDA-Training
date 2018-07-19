@@ -24,7 +24,7 @@ class Gambler {
     int wins = 0;     //  number of winning days
     int losses = 0;   //  number of losing days
 
-    // attempt the gambling game for given number of days
+    // attemptWith the gambling game for given number of days
     for (int i = 0; i < attempts; i++) {
       if (Utility.gamble(stake, goal, bet) == Result.WIN) { wins++; } else { losses++; }
     }

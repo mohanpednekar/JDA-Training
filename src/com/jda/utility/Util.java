@@ -63,7 +63,7 @@ class Util {
     if (low == high) {
       return low;
     }
-    System.out.println(n + " attempt" + (1 < n ? "s" : "") + " left");
+    System.out.println(n + " attemptWith" + (1 < n ? "s" : "") + " left");
     if (n == 0) {
       return -1;
     }

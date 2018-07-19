@@ -43,4 +43,9 @@ class Node<T> {
   void setNext(Node<T> next) {
     this.next = next;
   }
+
+  public
+  boolean hasNext() {
+    return next != null;
+  }
 }

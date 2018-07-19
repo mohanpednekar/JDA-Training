@@ -20,7 +20,7 @@ class OrderedListProgram {
     if (orderedList == null) { return; }
 
     System.out.println(orderedList);
-    System.out.println("Which word do you want to search for?");
+    System.out.println("Which number do you want to search for?");
     Reader reader = new Utility().new Reader();
     Integer numberToSearch = reader.readInteger();
 
