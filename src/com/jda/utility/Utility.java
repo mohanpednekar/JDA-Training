@@ -422,6 +422,11 @@ class Utility {
     String readString() {
       return scanner.next();
     }
+
+    public
+    String readLine() {
+      return scanner.nextLine();
+    }
   }
 
   public

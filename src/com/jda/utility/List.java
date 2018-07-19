@@ -57,6 +57,7 @@ class List<T> {
     return count;
   }
 
+  public
   boolean isEmpty() {
     return root == null;
   }
