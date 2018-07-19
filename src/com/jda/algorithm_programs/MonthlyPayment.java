@@ -11,6 +11,6 @@ class MonthlyPayment {
     double y = Double.parseDouble(args[1]);
     double r = Double.parseDouble(args[2]);
 
-    System.out.println(Util.monthlyPayment(p, y, r));
+    System.out.println("Monthly payment = " + Util.monthlyPayment(p, y, r));
   }
 }

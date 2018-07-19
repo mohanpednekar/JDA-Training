@@ -1,7 +1,9 @@
 package com.jda.algorithm_programs;
 
+import com.jda.utility.Util;
 import com.jda.utility.Utility;
 import com.jda.utility.Utility.Reader;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public
@@ -18,5 +20,10 @@ class VendingMachine {
       denominations.add(denomination);
     }
     System.out.println("Enter the amount you want to be disbursed");
+    int amount = reader.readInteger();
+
+    ArrayList<Integer> notes = Util.notesNeededToMake(amount, denominations);
+    System.out.println("Your notes are");
+    System.out.println(Utility.toString(notes));
   }
 }

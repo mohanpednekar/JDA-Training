@@ -24,7 +24,14 @@ class Util {
     sortedDenominations.addAll(denominations);
     ArrayList<Integer> notes = new ArrayList<>();
     while (money > 0) {
+      for (Integer denomination : denominations) {
+        if (denomination > money) { sortedDenominations.remove(denomination); }
+      }
+      int currentMoney = money;
+      denominations.removeIf(denomination -> denomination > currentMoney);
       int note = sortedDenominations.last();
+      money -= note;
+      notes.add(note);
     }
 
     return notes;
@@ -57,7 +64,7 @@ class Util {
       return low;
     }
     System.out.println(n + " attempt" + (1 < n ? "s" : "") + " left");
-    if (0 == n) {
+    if (n == 0) {
       return -1;
     }
     int mid = (high + low) / 2;
@@ -119,9 +126,8 @@ class Util {
   public static
   double sqrt(double number) {
     double EPSILON = 1e-15;
-    double root;
+    double root = number;
     do {
-      root = number;
       root = average(number / root, root);
     } while (Math.abs(root - (number / root)) > (EPSILON * root));
     return root;
@@ -154,6 +160,22 @@ class Util {
     return (p * r) / (1 - Math.pow(1 + r, -n));
   }
 
+  public static
+  int binaryToDecimal(String swappedNibbles) {
+    int decimal = 0;
+    for (char ch : swappedNibbles.toCharArray()) {
+      decimal *= 2;
+      if (ch == '1') { decimal++; }
+    }
+    return decimal;
+  }
+
+  public static
+  boolean isPowerOf2(String binary) {
+    String result = binary.replaceAll("0", "");
+    return result.length() == 1;
+  }
+
   public
   enum WeekDay {
     SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
@@ -167,7 +189,7 @@ class Util {
   public static
   String toBinary(int decimal) {
     StringBuilder binary = new StringBuilder();
-    int padding = 32;
+    int padding = 8;
     while (0 < decimal) {
       binary.append(decimal % 2);
       decimal /= 2;

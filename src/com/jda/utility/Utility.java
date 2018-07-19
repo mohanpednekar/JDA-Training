@@ -265,16 +265,6 @@ class Utility {
       return items;
     }
 
-//    static
-//    <T> int compare(T t, T t2) {
-//      if (t.getClass().toString().endsWith("Integer")) {
-//        return ((Integer) t).compareTo((Integer) t2);
-//      }
-//      if (t.getClass().toString().endsWith("String")) {
-//        return ((String) t).compareToIgnoreCase((String) t2);
-//      }
-//      return 0;
-//    }
 
     public static
     <T extends Comparable<T>> ArrayList<T> mergeSort(List<T> list) {
