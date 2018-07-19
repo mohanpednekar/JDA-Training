@@ -3,6 +3,7 @@ package com.jda.utility;
 public
 class Node<T> {
 
+  private Node<T> prev;
   private T data;
   private Node<T> next;
 
@@ -10,6 +11,13 @@ class Node<T> {
   Node(T data, Node<T> next) {
     setData(data);
     setNext(next);
+  }
+
+  public
+  Node(Node<T> prev, T data, Node<T> next) {
+    this.prev = prev;
+    this.data = data;
+    this.next = next;
   }
 
   public
@@ -42,6 +50,21 @@ class Node<T> {
   public
   void setNext(Node<T> next) {
     this.next = next;
+  }
+
+  public
+  Node<T> getPrev() {
+    return prev;
+  }
+
+  public
+  void setPrev(Node<T> prev) {
+    this.prev = prev;
+  }
+
+  public
+  boolean hasPrev() {
+    return prev != null;
   }
 
   public
