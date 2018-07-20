@@ -7,6 +7,7 @@
  *******************************************************************/
 package com.jda.utility;
 
+import com.jda.functionalprograms.StringPermutations;
 import com.jda.utility.Util.Calendar.DayOfWeek;
 import com.jda.utility.Util.Calendar.Month;
 import com.jda.utility.Utility.Reader;
@@ -215,6 +216,15 @@ class Util {
       input.delete(0, 8);
     }
     return output.toString();
+  }
+
+  public static
+  HashSet<Integer> anagramsOf(Integer prime) {
+    HashSet<Integer> anagrams = new HashSet<>();
+    String string = String.valueOf(prime);
+    HashSet<String> anagramsAsStrings = StringPermutations.recursivelyPermute(string);
+    for (String anagram : anagramsAsStrings) { anagrams.add(Integer.parseInt(anagram)); }
+    return anagrams;
   }
 
   public

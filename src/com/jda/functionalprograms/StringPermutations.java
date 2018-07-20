@@ -29,7 +29,8 @@ public class StringPermutations {
 		return permuted;
 	}
 
-	private static HashSet<String> recursivelyPermute(String string) {
+	public static
+	HashSet<String> recursivelyPermute(String string) {
 		int n = string.length();
 		return recursivelyPermute(string, 0, n - 1);
 	}
