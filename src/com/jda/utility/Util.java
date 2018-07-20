@@ -227,6 +227,22 @@ class Util {
     return anagrams;
   }
 
+  public static
+  boolean isPrimeAnagram(ArrayList<Integer> primes, Integer prime) {
+    HashSet<Integer> anagrams = anagramsOf(prime);
+    boolean foundPrimeAnagram = false;
+    if (anagrams.size() > 1) {
+      for (Integer anagram : anagrams) {
+        if (primes.contains(anagram)) {
+          if (!anagram.equals(prime)) {
+            foundPrimeAnagram = true;
+          }
+        }
+      }
+    }
+    return foundPrimeAnagram;
+  }
+
   public
   enum TemperatureUnit {
     Celsius, Fahrenheit

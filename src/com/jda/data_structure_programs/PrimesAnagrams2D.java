@@ -14,16 +14,7 @@ class PrimesAnagrams2D {
     HashSet<Integer> nonAnagramPrimes = new HashSet<>();
 
     for (Integer prime : primes) {
-      HashSet<Integer> anagrams = Util.anagramsOf(prime);
-      boolean foundPrimeAnagram = false;
-      if (anagrams.size() > 1) {
-        for (Integer anagram : anagrams) {
-          if (primes.contains(anagram)) {
-            if (!anagram.equals(prime)) { anagramPrimes.add(anagram); }
-            foundPrimeAnagram = true;
-          }
-        }
-      }
+      boolean foundPrimeAnagram = Util.isPrimeAnagram(primes, prime);
       if (foundPrimeAnagram) { anagramPrimes.add(prime); }
       else { nonAnagramPrimes.add(prime); }
     }
