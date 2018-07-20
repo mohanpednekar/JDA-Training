@@ -9,6 +9,9 @@
 
 package com.jda.utility;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -32,7 +35,8 @@ class Utility {
     if (d < 0) {
       roots.add(new ComplexNumber(real, img));
       roots.add(new ComplexNumber(real, -img));
-    } else {
+    }
+    else {
       roots.add(new ComplexNumber(real + img, 0));
       roots.add(new ComplexNumber(real - img, 0));
     }
@@ -98,7 +102,8 @@ class Utility {
     while (true) {
       if (coinFlip.flipACoin() == CoinFace.HEAD) {
         balance += bet;
-      } else {
+      }
+      else {
         balance -= bet;
       }
       if (balance >= goal) {
@@ -211,6 +216,16 @@ class Utility {
     return sb.toString();
   }
 
+  public static
+  String[] getWordsFromFile(String filePath) {
+    try {
+      return new String(Files.readAllBytes(Paths.get(filePath))).split("\\s");
+    } catch (IOException e) {
+      System.out.println("Reading file failed");
+      return null;
+    }
+  }
+
   // defines an enum for the only two possibilities of coin faces
   enum CoinFace {
     // head and tail initialised with zero frequency
@@ -265,7 +280,6 @@ class Utility {
       return items;
     }
 
-
     public static
     <T extends Comparable<T>> ArrayList<T> mergeSort(List<T> list) {
       int n = list.size();
@@ -278,7 +292,8 @@ class Utility {
       while (!part1.isEmpty() && !part2.isEmpty()) {
         if (part1.get(0).compareTo(part2.get(0)) < 0) {
           sorted.add(part1.remove(0));
-        } else {
+        }
+        else {
           sorted.add(part2.remove(0));
         }
       }
