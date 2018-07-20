@@ -19,8 +19,7 @@ class NumberOfBST {
     int max = Collections.max(testCases);
     long[] nBST = new long[max + 1];
     nBST[0] = 1;
-    nBST[1] = 1;
-    for (int i = 2; i <= max; i++) {
+    for (int i = 1; i <= max; i++) {
       for (int j = 0; j < i; j++) {
         nBST[i] = (nBST[i] + ((nBST[j] * nBST[i - 1 - j]) % MOD)) % MOD;
       }

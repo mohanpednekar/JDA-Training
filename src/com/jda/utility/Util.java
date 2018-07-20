@@ -7,6 +7,8 @@
  *******************************************************************/
 package com.jda.utility;
 
+import com.jda.utility.Util.Calendar.DayOfWeek;
+import com.jda.utility.Util.Calendar.Month;
 import com.jda.utility.Utility.Reader;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -115,12 +117,13 @@ class Util {
   }
 
   public static
-  WeekDay dayOfWeek(int m, int d, int y) {
+  DayOfWeek dayOfWeek(Month month, int d, int y) {
+    int m = month.ordinal() + 1;
     int y0 = y - ((14 - m) / 12);
     int x = ((y0 + (y0 / 4)) - (y0 / 100)) + (y0 / 400);
     int m0 = (m + (12 * ((14 - m) / 12))) - 2;
     int d0 = (d + x + ((31 * m0) / 12)) % 7;
-    return WeekDay.values()[d0];
+    return DayOfWeek.values()[d0];
   }
 
   public static
@@ -176,11 +179,6 @@ class Util {
     return result.length() == 1;
   }
 
-  public
-  enum WeekDay {
-    SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
-  }
-
   private static
   double average(double n1, double n2) {
     return (n1 + n2) / 2;
@@ -222,6 +220,38 @@ class Util {
   public
   enum TemperatureUnit {
     Celsius, Fahrenheit
+  }
+
+  public static
+  class Calendar {
+
+    public
+    enum Month {
+      JANUARY(31), FEBRUARY(28), MARCH(31), APRIL(30), MAY(31), JUNE(30), JULY(31), AUGUST(
+          31), SEPTEMBER(30), OCTOBER(31), NOVEMBER(30), DECEMBER(31);
+      int nDays;
+
+      Month(int nDays) {
+        this.nDays = nDays;
+      }
+
+      public
+      int getnDays() {
+        return nDays;
+      }
+    }
+
+    public
+    enum DayOfWeek {
+      SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY;
+
+      public
+      String custom() {
+        if (equals(THURSDAY)) { return "Th"; }
+        return " " + toString().charAt(0);
+      }
+
+    }
   }
 
   public static
