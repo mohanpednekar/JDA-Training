@@ -4,6 +4,8 @@ import com.jda.utility.Constants;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public
 class RegexDemo {
@@ -24,18 +26,19 @@ class RegexDemo {
 
     System.out.println(message);
 
-    System.out.println("What's your name");
-
-    String result = message.replaceAll(Regex.NAME.toString(), "Mohan")
-        .replaceAll(Regex.FULL_NAME.toString(), "Mohan Pednekar")
-        .replaceAll(Regex.CONTACT_NUMBER.toString(), "91-8767337673")
-        .replaceAll(Regex.DATE.toString(), "23/07/2018");
+    String fullName = "Mohan Pednekar";
+    long number = 8767337673L;
+    String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    String result = message.replaceAll(Regex.NAME.toString(), fullName.split("\\s")[0])
+        .replaceAll(Regex.FULL_NAME.toString(), fullName)
+        .replaceAll(Regex.CONTACT_NUMBER.toString(), "91-" + number)
+        .replaceAll(Regex.DATE.toString(), date);
     System.out.println(result);
   }
 
   enum Regex {
     NAME("<<name>>"), FULL_NAME("<<full name>>"), CONTACT_NUMBER("91-xxxxxxxxxx"), DATE(
-        "^\\d{2}\\/\\d{2}\\/\\d{4}$");
+        "\\d{2}\\/\\d{2}\\/\\d{4}");
 
     private String regex;
 
