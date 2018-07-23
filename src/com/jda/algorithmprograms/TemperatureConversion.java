@@ -1,4 +1,4 @@
-package com.jda.algorithm_programs;
+package com.jda.algorithmprograms;
 
 import com.jda.utility.Util;
 import com.jda.utility.Util.TemperatureUnit;

@@ -1,4 +1,4 @@
-package com.jda.data_structure_programs;
+package com.jda.datastructureprograms;
 
 public
 class Calendar2 {

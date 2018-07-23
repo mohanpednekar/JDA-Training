@@ -5,7 +5,7 @@
  * @version 1.0
  * @since Jul 11, 2018
  *******************************************************************/
-package com.jda.algorithm_programs;
+package com.jda.algorithmprograms;
 
 import com.jda.utility.Util.Stopwatch;
 import com.jda.utility.Utility;

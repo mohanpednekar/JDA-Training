@@ -5,15 +5,14 @@
  * @version 1.0
  * @since Jul 9, 2018
  *******************************************************************/
-package com.jda.algorithm_programs;
-
-import java.util.ArrayList;
+package com.jda.algorithmprograms;
 
 import com.jda.utility.Util;
+import java.util.ArrayList;
 
 public class Primes {
-	
-	/**
+
+  /**
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -21,5 +20,4 @@ public class Primes {
 		ArrayList<Integer> primes = Util.primesUpto(maxPrime);
 		primes.forEach(System.out::println);
 	}
-	
 }

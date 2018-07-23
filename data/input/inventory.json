@@ -1,0 +1,22 @@
+{
+  "inventory": [
+    {
+      "productname": "rice",
+      "name": "Basmati",
+      "weight": 100,
+      "priceperkg": 2
+    },
+    {
+      "productname": "pulses",
+      "name": "Quaker",
+      "weight": 20,
+      "priceperkg": 20
+    },
+    {
+      "productname": "wheat",
+      "name": "Ashirvad",
+      "weight": 50,
+      "priceperkg": 3
+    }
+  ]
+}
