@@ -1,5 +1,6 @@
 package com.jda.objectorientedprograms.classes;
 
+import com.jda.utility.Reader;
 import org.json.simple.JSONObject;
 
 public
@@ -16,11 +17,26 @@ class Product {
     priceperkg = (long) jsonObject.get("priceperkg");
   }
 
+  public
+  Product(Reader reader) {
+    System.out.println("Enter name");
+    name = reader.readLine();
+    System.out.println("Enter weight");
+    weight = reader.readLong();
+    System.out.println("Enter price per kg");
+    priceperkg = reader.readLong();
+  }
+
+  public
+  String getName() {
+    return name;
+  }
+
   @Override
   public
   String toString() {
-    return "{" + "name : \"" + name + '\"' + ", weight : " + weight + ", priceperkg : " + priceperkg
-        + '}';
+    return "{" + "\"name\" : \"" + name + '\"' + ", \"weight\" : " + weight + ", \"priceperkg\" : "
+        + priceperkg + '}';
   }
 
   public

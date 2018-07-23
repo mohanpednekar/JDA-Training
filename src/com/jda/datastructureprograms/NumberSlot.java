@@ -16,6 +16,8 @@ class NumberSlot {
     System.out.println("Your hash table looks like this");
     HashMap<Integer, OrderedList<Integer>> map = createMap(INPUT, 11);
     System.out.println(map);
+
+    //TODO input
   }
 
   private static

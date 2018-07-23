@@ -10,6 +10,8 @@ package com.jda.utility;
 import com.jda.functionalprograms.StringPermutations;
 import com.jda.utility.Util.Calendar.DayOfWeek;
 import com.jda.utility.Util.Calendar.Month;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -217,6 +219,15 @@ class Util {
       input.delete(0, 8);
     }
     return output.toString();
+  }
+
+  public static
+  void printToFile(String filePath, Object object) {
+    try (PrintWriter out = new PrintWriter(filePath)) {
+      out.println(object);
+    } catch (FileNotFoundException e) {
+      System.out.println("Writing to file failed");
+    }
   }
 
   public static

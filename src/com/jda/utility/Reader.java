@@ -69,4 +69,9 @@ class Reader {
   String readLine() {
     return scanner.nextLine();
   }
+
+  public
+  long readLong() {
+    return Long.parseLong(scanner.next());
+  }
 }
