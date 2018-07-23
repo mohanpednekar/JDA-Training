@@ -1,6 +1,6 @@
 package com.jda.datastructureprograms;
 
-import com.jda.utility.OrderedList;
+import com.jda.datastructures.OrderedList;
 import com.jda.utility.Utility;
 import java.util.HashMap;
 

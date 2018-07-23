@@ -7,8 +7,8 @@
  *******************************************************************/
 package com.jda.functionalprograms;
 
+import com.jda.utility.Reader;
 import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
 import java.util.ArrayList;
 
 public
@@ -16,7 +16,7 @@ class Factors {
 
   public static
   void main(String[] args) {
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     Utility.printLine("Enter a number to factorise");
     int n = reader.readInteger();
 

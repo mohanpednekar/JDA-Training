@@ -8,8 +8,8 @@
 
 package com.jda.functionalprograms;
 
+import com.jda.utility.Reader;
 import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
 
 public
 class PowerOfTwo {
@@ -17,7 +17,7 @@ class PowerOfTwo {
   public static
   void main(String[] args) {
 
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
 
     // checks whether a command line argument is provided
     if (!Utility.checkCmdArgs(args, 1)) { return; }

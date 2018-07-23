@@ -1,7 +1,6 @@
 package com.jda.datastructureprograms;
 
-import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
+import com.jda.utility.Reader;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -12,7 +11,7 @@ class NumberOfBST {
 
   public static
   void main(String[] args) {
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     int T = reader.readInteger();
     ArrayList<Integer> testCases = new ArrayList<>();
     for (int i = 0; i < T; i++) { testCases.add(reader.readInteger()); }

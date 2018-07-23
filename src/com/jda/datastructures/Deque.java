@@ -1,4 +1,4 @@
-package com.jda.utility;
+package com.jda.datastructures;
 
 public
 class Deque<T> extends Queue<T> {

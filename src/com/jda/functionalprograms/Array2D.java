@@ -1,14 +1,14 @@
 package com.jda.functionalprograms;
 
+import com.jda.utility.Reader;
 import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
 
 public
 class Array2D {
 
   public static
   void main(String[] args) {
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     Utility.printLine("Let's create a 2D array.");
     Utility.printLine("Enter the number of rows");
     int rows = reader.readInteger();

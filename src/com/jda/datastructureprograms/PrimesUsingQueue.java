@@ -1,6 +1,6 @@
 package com.jda.datastructureprograms;
 
-import com.jda.utility.Queue;
+import com.jda.datastructures.Queue;
 import com.jda.utility.Util;
 import java.util.ArrayList;
 

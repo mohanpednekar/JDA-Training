@@ -1,8 +1,7 @@
 package com.jda.datastructureprograms;
 
-import com.jda.utility.Deque;
-import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
+import com.jda.datastructures.Deque;
+import com.jda.utility.Reader;
 
 public
 class PalindromeChecker {
@@ -11,7 +10,7 @@ class PalindromeChecker {
   void main(String[] args) {
     System.out.println("Welcome to Palindrome checker");
     System.out.println("Enter a string");
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     String input = reader.readString();
     char[] originalChars = input.toCharArray();
     Deque<Character> characterDeque = new Deque<>();

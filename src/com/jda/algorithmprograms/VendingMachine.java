@@ -1,8 +1,8 @@
 package com.jda.algorithmprograms;
 
+import com.jda.utility.Reader;
 import com.jda.utility.Util;
 import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -11,7 +11,7 @@ class VendingMachine {
 
   public static
   void main(String[] args) {
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     System.out.println("Enter the denominations available in your currency followed by 0");
     HashSet<Integer> denominations = new HashSet<>();
     while (true) {

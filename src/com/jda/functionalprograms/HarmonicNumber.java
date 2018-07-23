@@ -8,15 +8,15 @@
 
 package com.jda.functionalprograms;
 
+import com.jda.utility.Reader;
 import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
 
 public
 class HarmonicNumber {
 
   public static
   void main(String[] args) {
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     Utility.printLine("Which harmonic number do you wath to find?");
     int n = reader.readInteger();
     if (n < 1) { Utility.printLine("Enter a positive number"); }

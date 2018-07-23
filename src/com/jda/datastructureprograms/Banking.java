@@ -1,8 +1,7 @@
 package com.jda.datastructureprograms;
 
-import com.jda.utility.Queue;
-import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
+import com.jda.datastructures.Queue;
+import com.jda.utility.Reader;
 
 enum TransactionType {DEPOSIT, WITHDRAW}
 
@@ -58,7 +57,7 @@ class Banking {
 
     Queue<Transaction> peopleQueue = new Queue<>();
 
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     while (true) {
       switch (reader.readString().charAt(0)) {
         case 'd':

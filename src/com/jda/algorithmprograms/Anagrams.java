@@ -7,13 +7,12 @@
  *******************************************************************/
 package com.jda.algorithmprograms;
 
+import com.jda.utility.Reader;
 import com.jda.utility.Util;
-import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
 
 public class Anagrams {
 	public static void main(String[] args) {
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
 		System.out.println("Enter first string");
 
     String string1 = reader.readString();

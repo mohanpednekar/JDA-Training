@@ -1,8 +1,7 @@
 package com.jda.datastructureprograms;
 
-import com.jda.utility.Stack;
-import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
+import com.jda.datastructures.Stack;
+import com.jda.utility.Reader;
 
 public
 class BalancedParentheses {
@@ -10,7 +9,7 @@ class BalancedParentheses {
   public static
   void main(String[] args) {
     System.out.println("Enter an arithmetic expression");
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     String expression = reader.readLine();
 
     System.out.println(isBalanced(expression));

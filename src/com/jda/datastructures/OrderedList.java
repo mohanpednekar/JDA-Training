@@ -1,4 +1,4 @@
-package com.jda.utility;
+package com.jda.datastructures;
 
 public
 class OrderedList<T extends Comparable<T>> extends List<T> {

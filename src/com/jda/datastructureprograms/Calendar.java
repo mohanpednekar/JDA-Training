@@ -1,6 +1,6 @@
 package com.jda.datastructureprograms;
 
-import com.jda.utility.Squeue;
+import com.jda.datastructures.Squeue;
 import com.jda.utility.Util;
 import com.jda.utility.Util.Calendar.DayOfWeek;
 import com.jda.utility.Util.Calendar.Month;

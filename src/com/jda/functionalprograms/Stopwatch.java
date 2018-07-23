@@ -1,13 +1,13 @@
 package com.jda.functionalprograms;
 
+import com.jda.utility.Reader;
 import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
 
 public
 class Stopwatch {
 	public static
 	void main(String[] args) {
-		Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
 		long start = System.currentTimeMillis();
 		doNothing(10e7);
 		long end = System.currentTimeMillis();

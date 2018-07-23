@@ -1,15 +1,14 @@
 package com.jda.algorithmprograms;
 
+import com.jda.utility.Reader;
 import com.jda.utility.Util;
-import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
 
 public
 class BinaryForm {
 
   public static
   void main(String[] args) {
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     System.out.println("Enter a number to convert to Binary");
     int number = reader.readInteger();
     System.out.print("The binary form is ");

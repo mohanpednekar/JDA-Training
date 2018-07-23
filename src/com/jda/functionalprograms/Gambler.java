@@ -2,8 +2,8 @@
 
 package com.jda.functionalprograms;
 
+import com.jda.utility.Reader;
 import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
 import com.jda.utility.Utility.Result;
 
 public
@@ -11,7 +11,7 @@ class Gambler {
 
   public static
   void main(String[] args) {
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     Utility.printLine("Welcome to Casino Royale!");
     Utility.printLine("How much do you want to stake each day?");
     int stake = reader.readInteger();

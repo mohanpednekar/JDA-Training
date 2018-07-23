@@ -1,8 +1,8 @@
 package com.jda.datastructureprograms;
 
-import com.jda.utility.UnorderedList;
+import com.jda.datastructures.UnorderedList;
+import com.jda.utility.Reader;
 import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
 
 public
 class UnorderedListProgram {
@@ -19,7 +19,7 @@ class UnorderedListProgram {
 
     System.out.println(unorderedList);
     System.out.println("Which word do you want to search for?");
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     String wordToSearch = reader.readString();
 
     boolean found = unorderedList.search(wordToSearch);

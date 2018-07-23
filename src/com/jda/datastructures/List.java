@@ -1,4 +1,4 @@
-package com.jda.utility;
+package com.jda.datastructures;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

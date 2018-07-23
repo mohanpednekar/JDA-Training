@@ -1,9 +1,8 @@
 package com.jda.algorithmprograms;
 
+import com.jda.utility.Reader;
 import com.jda.utility.Util;
 import com.jda.utility.Util.Calendar.Month;
-import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
 
 public
 class DayOfWeek {
@@ -11,7 +10,7 @@ class DayOfWeek {
   public static
   void main(String[] args) {
     System.out.println("Enter date in \"mm dd yyyy\" format");
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     int mm = reader.readInteger();
     int dd = reader.readInteger();
     int yyyy = reader.readInteger();

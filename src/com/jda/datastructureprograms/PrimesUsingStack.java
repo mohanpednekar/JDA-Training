@@ -1,6 +1,6 @@
 package com.jda.datastructureprograms;
 
-import com.jda.utility.Stack;
+import com.jda.datastructures.Stack;
 import com.jda.utility.Util;
 import java.util.ArrayList;
 

@@ -1,14 +1,14 @@
 package com.jda.functionalprograms;
 
+import com.jda.utility.Reader;
 import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
 
 public
 class ZeroSumTriples {
 
   public static
   void main(String[] args) {
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     Utility.printLine("How many integers do you want to read?");
     int n = reader.readInteger();
     Utility.printLine("Enter " + n + " integers");

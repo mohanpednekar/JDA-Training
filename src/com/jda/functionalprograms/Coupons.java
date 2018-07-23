@@ -1,7 +1,7 @@
 package com.jda.functionalprograms;
 
+import com.jda.utility.Reader;
 import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -12,7 +12,7 @@ class Coupons {
   void main(String[] args) {
     int MAX_COUPONS;
 
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     Utility.printLine("Welcome to Lotto mania!");
 
     Utility.printLine("How many coupons do you want to generate?");

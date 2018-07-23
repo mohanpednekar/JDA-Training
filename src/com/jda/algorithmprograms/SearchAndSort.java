@@ -7,9 +7,9 @@
  *******************************************************************/
 package com.jda.algorithmprograms;
 
+import com.jda.utility.Reader;
 import com.jda.utility.Util.Stopwatch;
 import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
 import com.jda.utility.Utility.Sorting;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ class SearchAndSort {
 
   public static
   void main(String[] args) {
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     SearchAndSort programs = new SearchAndSort();
     Utility.printLine("What do you want to enter?");
     Utility.printLine("s : Strings \t i : Integers");

@@ -1,8 +1,8 @@
 package com.jda.datastructureprograms;
 
-import com.jda.utility.OrderedList;
+import com.jda.datastructures.OrderedList;
+import com.jda.utility.Reader;
 import com.jda.utility.Utility;
-import com.jda.utility.Utility.Reader;
 
 public
 class OrderedListProgram {
@@ -18,7 +18,7 @@ class OrderedListProgram {
 
     System.out.println(orderedList);
     System.out.println("Which number do you want to search for?");
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     Integer numberToSearch = reader.readInteger();
 
     boolean found = orderedList.search(numberToSearch);

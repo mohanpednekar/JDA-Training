@@ -10,10 +10,11 @@ package com.jda.utility;
 import com.jda.functionalprograms.StringPermutations;
 import com.jda.utility.Util.Calendar.DayOfWeek;
 import com.jda.utility.Util.Calendar.Month;
-import com.jda.utility.Utility.Reader;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
@@ -82,7 +83,7 @@ class Util {
     }
     query.append("?");
     System.out.println(query);
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     boolean correctGuess = reader.readBoolean("y", "n");
     return correctGuess ? guess(low, mid, n - 1) : guess(mid + 1, high, n - 1);
   }
@@ -241,6 +242,19 @@ class Util {
       }
     }
     return foundPrimeAnagram;
+  }
+
+  public static
+  StringBuilder createJSONFromArray(Collection products) {
+    StringBuilder jsonArrayString = new StringBuilder();
+    jsonArrayString.append('[');
+    Iterator iterator = products.iterator();
+    while (iterator.hasNext()) {
+      jsonArrayString.append(iterator.next());
+      if (iterator.hasNext()) { jsonArrayString.append(", "); }
+    }
+    jsonArrayString.append(']');
+    return jsonArrayString;
   }
 
   public

@@ -1,4 +1,4 @@
-package com.jda.utility;
+package com.jda.datastructures;
 
 public
 class Stack<T> extends List<T> {

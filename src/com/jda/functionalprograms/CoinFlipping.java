@@ -10,9 +10,9 @@
 
 package com.jda.functionalprograms;
 
+import com.jda.utility.Reader;
 import com.jda.utility.Utility;
 import com.jda.utility.Utility.CoinFlip;
-import com.jda.utility.Utility.Reader;
 
 public
 class CoinFlipping {
@@ -20,7 +20,7 @@ class CoinFlipping {
   public static
   void main(String[] args) {
 
-    Reader reader = new Utility().new Reader();
+    Reader reader = new Reader();
     Utility.printLine("How many times do you want to flip coin?");
 
     // nCoinFlips  is the number of times the coin is to be flipped
