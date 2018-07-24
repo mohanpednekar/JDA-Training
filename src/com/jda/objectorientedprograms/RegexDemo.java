@@ -37,7 +37,7 @@ class RegexDemo {
   }
 
   enum Regex {
-    NAME("<<name>>"), FULL_NAME("<<full name>>"), CONTACT_NUMBER("91-xxxxxxxxxx"), DATE(
+    NAME("<<[a-z]{4}>>"), FULL_NAME("<<[a-z ]{9}>>"), CONTACT_NUMBER("91-[x]{10}"), DATE(
         "\\d{2}\\/\\d{2}\\/\\d{4}");
 
     private String regex;

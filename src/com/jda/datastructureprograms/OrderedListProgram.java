@@ -1,15 +1,15 @@
 package com.jda.datastructureprograms;
 
 import com.jda.datastructures.OrderedList;
+import com.jda.utility.Constants;
 import com.jda.utility.Reader;
-import com.jda.utility.Utility;
+import com.jda.utility.StringUtils;
 
 public
 class OrderedListProgram {
 
-  static String DATA_PATH = "C:/Users/1023345/IdeaProjects/JDA-Training/data";
-  static String INPUT = DATA_PATH + "/input/orderedLists.txt";
-  static String OUTPUT = DATA_PATH + "/output/orderedLists.txt";
+  static String INPUT = Constants.INPUT_PATH + "orderedLists.txt";
+  static String OUTPUT = Constants.OUTPUT_PATH + "orderedLists.txt";
 
   public static
   void main(String[] args) {
@@ -32,7 +32,7 @@ class OrderedListProgram {
   private static
   OrderedList<Integer> readFromFile(String filePath) {
     OrderedList<Integer> orderedList = new OrderedList<>();
-    String[] words = Utility.getWordsFromFile(filePath);
+    String[] words = StringUtils.getWordsFromFile(filePath);
     if (words == null) { return null; }
     for (String word : words) {
       orderedList.add(Integer.parseInt(word));

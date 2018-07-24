@@ -1,8 +1,8 @@
 package com.jda.algorithmprograms;
 
+import com.jda.utility.Calendar;
+import com.jda.utility.Enums.Month;
 import com.jda.utility.Reader;
-import com.jda.utility.Util;
-import com.jda.utility.Util.Calendar.Month;
 
 public
 class DayOfWeek {
@@ -14,6 +14,6 @@ class DayOfWeek {
     int mm = reader.readInteger();
     int dd = reader.readInteger();
     int yyyy = reader.readInteger();
-    System.out.println(Util.dayOfWeek(Month.values()[mm - 1], dd, yyyy));
+    System.out.println(Calendar.dayOfWeek(Month.values()[mm - 1], dd, yyyy));
   }
 }

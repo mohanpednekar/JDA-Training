@@ -1,7 +1,7 @@
 package com.jda.functionalprograms;
 
+import com.jda.utility.Printer;
 import com.jda.utility.Reader;
-import com.jda.utility.Utility;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -13,9 +13,9 @@ class Coupons {
     int MAX_COUPONS;
 
     Reader reader = new Reader();
-    Utility.printLine("Welcome to Lotto mania!");
+    Printer.printLine("Welcome to Lotto mania!");
 
-    Utility.printLine("How many coupons do you want to generate?");
+    Printer.printLine("How many coupons do you want to generate?");
     int nCoupons = reader.readInteger();
     MAX_COUPONS = nCoupons;
     HashSet<Integer> couponSet = new HashSet<>();
@@ -23,11 +23,11 @@ class Coupons {
       couponSet.add(randomNumber(MAX_COUPONS));
     }
 
-    Utility.printLine("Your coupons are " + Utility.toString(couponSet));
+    Printer.printLine("Your coupons are " + Printer.toString(couponSet));
 
     int attempts = attemptsToProcessDistinctCoupons(couponSet, MAX_COUPONS);
 
-    Utility.printLine("All coupons generated in " + attempts + " attempts.");
+    Printer.printLine("All coupons generated in " + attempts + " attempts.");
   }
 
   private static

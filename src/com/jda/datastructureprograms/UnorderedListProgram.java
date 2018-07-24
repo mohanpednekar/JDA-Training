@@ -1,15 +1,15 @@
 package com.jda.datastructureprograms;
 
 import com.jda.datastructures.UnorderedList;
+import com.jda.utility.Constants;
 import com.jda.utility.Reader;
-import com.jda.utility.Utility;
+import com.jda.utility.StringUtils;
 
 public
 class UnorderedListProgram {
 
-  static String DATA_PATH = "C:/Users/1023345/IdeaProjects/JDA-Training/data";
-  static String INPUT = DATA_PATH + "/input/unorderedLists.txt";
-  static String OUTPUT = DATA_PATH + "/output/unorderedLists.txt";
+  static String INPUT = Constants.INPUT_PATH + "unorderedLists.txt";
+  static String OUTPUT = Constants.OUTPUT_PATH + "unorderedLists.txt";
 
   public static
   void main(String[] args) {
@@ -33,7 +33,7 @@ class UnorderedListProgram {
   private static
   UnorderedList<String> readFromFile(String filePath) {
     UnorderedList<String> unorderedList = new UnorderedList<>();
-    String[] words = Utility.getWordsFromFile(filePath);
+    String[] words = StringUtils.getWordsFromFile(filePath);
     if (words == null) { return null; }
 
     for (String word : words) {

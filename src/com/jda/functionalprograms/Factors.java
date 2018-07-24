@@ -7,8 +7,9 @@
  *******************************************************************/
 package com.jda.functionalprograms;
 
+import com.jda.utility.Maths;
+import com.jda.utility.Printer;
 import com.jda.utility.Reader;
-import com.jda.utility.Utility;
 import java.util.ArrayList;
 
 public
@@ -17,17 +18,17 @@ class Factors {
   public static
   void main(String[] args) {
     Reader reader = new Reader();
-    Utility.printLine("Enter a number to factorise");
+    Printer.printLine("Enter a number to factorise");
     int n = reader.readInteger();
 
     ArrayList<Integer> factors = new ArrayList<>();
     int temp = n;
     while (temp > 1) {
-      int f = Utility.primeFactor(temp);
+      int f = Maths.primeFactor(temp);
       factors.add(f);
       temp = temp / f;
     }
 
-    Utility.printLine("The prime factors of " + n + " are " + Utility.toString(factors));
+    Printer.printLine("The prime factors of " + n + " are " + Printer.toString(factors));
   }
 }

@@ -3,11 +3,10 @@ package com.jda.functionalprograms;
 import static com.jda.functionalprograms.TicTacToe.Cell.O;
 import static com.jda.functionalprograms.TicTacToe.Cell.X;
 
+import com.jda.utility.Printer;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.IntStream;
-
-import com.jda.utility.Utility;
 
 public class TicTacToe {
 	enum Cell {
@@ -28,7 +27,7 @@ public class TicTacToe {
 					return "O";
 			}
 			return " ";
-			
+
 		}
 	}
 
@@ -59,14 +58,14 @@ public class TicTacToe {
 
 		void declareResult() {
 			if (winnerFound()) {
-				System.out.println("The winner is " + X.toString());
+        System.out.println("The winner is " + X);
 			} else {
 				System.out.println("The game ended in a draw");
 			}
 		}
 
 		private void displayBoard() {
-			Utility.printArray(board, BOARD_SIZE, BOARD_SIZE);
+      Printer.printArray(board, BOARD_SIZE, BOARD_SIZE);
 		}
 
 		private boolean downwardWin() {

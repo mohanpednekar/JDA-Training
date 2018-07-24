@@ -1,10 +1,8 @@
 package com.jda.datastructureprograms;
 
 import com.jda.datastructures.Squeue;
-import com.jda.utility.Util;
-import com.jda.utility.Util.Calendar.DayOfWeek;
-import com.jda.utility.Util.Calendar.Month;
-import com.jda.utility.Utility;
+import com.jda.utility.Enums.DayOfWeek;
+import com.jda.utility.Enums.Month;
 
 public
 class Calendar {
@@ -21,8 +19,8 @@ class Calendar {
     month = Month.values()[mm - 1];
     year = yyyy;
     nDays = month.getnDays();
-    if (month.equals(Month.FEBRUARY) && Utility.isLeapYear(year)) { nDays = 29; }
-    startDay = Util.dayOfWeek(month, 1, year);
+    if (month.equals(Month.FEBRUARY) && com.jda.utility.Calendar.isLeapYear(year)) { nDays = 29; }
+    startDay = com.jda.utility.Calendar.dayOfWeek(month, 1, year);
   }
 
   public static

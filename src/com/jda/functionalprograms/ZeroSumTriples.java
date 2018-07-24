@@ -1,7 +1,7 @@
 package com.jda.functionalprograms;
 
+import com.jda.utility.Printer;
 import com.jda.utility.Reader;
-import com.jda.utility.Utility;
 
 public
 class ZeroSumTriples {
@@ -9,12 +9,12 @@ class ZeroSumTriples {
   public static
   void main(String[] args) {
     Reader reader = new Reader();
-    Utility.printLine("How many integers do you want to read?");
+    Printer.printLine("How many integers do you want to read?");
     int n = reader.readInteger();
-    Utility.printLine("Enter " + n + " integers");
+    Printer.printLine("Enter " + n + " integers");
     int[] array = reader.readIntegerArray(n);
     int count = findZeroSumTriples(array);
-    Utility.printLine("There are " + count + " zero sum triples");
+    Printer.printLine("There are " + count + " zero sum triples");
   }
 
   private static

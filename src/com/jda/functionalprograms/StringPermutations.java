@@ -1,13 +1,13 @@
 package com.jda.functionalprograms;
 
+import com.jda.utility.Printer;
 import com.jda.utility.Reader;
-import com.jda.utility.Utility;
 import java.util.HashSet;
 
 public class StringPermutations {
 	public static void main(String[] args) {
     Reader reader = new Reader();
-		Utility.printLine("Enter a string to permute");
+    Printer.printLine("Enter a string to permute");
 		String string = reader.readString();
 
 		HashSet<String> iteratedPermutations = iterativelyPermute(string);

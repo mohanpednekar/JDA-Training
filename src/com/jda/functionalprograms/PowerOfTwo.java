@@ -8,8 +8,11 @@
 
 package com.jda.functionalprograms;
 
+import com.jda.utility.Maths;
+import com.jda.utility.Printer;
 import com.jda.utility.Reader;
-import com.jda.utility.Utility;
+import com.jda.utility.StringUtils;
+import com.jda.utility.Validation;
 
 public
 class PowerOfTwo {
@@ -20,13 +23,13 @@ class PowerOfTwo {
     Reader reader = new Reader();
 
     // checks whether a command line argument is provided
-    if (!Utility.checkCmdArgs(args, 1)) { return; }
+    if (!Validation.checkCmdArgs(args, 1)) { return; }
 
-    int n = Utility.stringToPositiveInteger(args[0]);
+    int n = StringUtils.stringToPositiveInteger(args[0]);
     if (n == -1) { return; }
-    if (n >= 31) { Utility.printLine("Please input a power less than 31"); }
-    int result = Utility.power(2, n);
+    if (n >= 31) { Printer.printLine("Please input a power less than 31"); }
+    int result = Maths.power(2, n);
 
-    Utility.printLine("The " + Utility.ordinal(n) + " power of 2 is " + result);
+    Printer.printLine("The " + StringUtils.ordinal(n) + " power of 2 is " + result);
   }
 }

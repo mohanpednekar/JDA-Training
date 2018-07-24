@@ -8,7 +8,7 @@
 package com.jda.algorithmprograms;
 
 import com.jda.utility.Reader;
-import com.jda.utility.Util;
+import com.jda.utility.StringUtils;
 
 public class Anagrams {
 	public static void main(String[] args) {
@@ -21,7 +21,7 @@ public class Anagrams {
 
     String string2 = reader.readString();
 
-		if (Util.areAnagrams(string1, string2)) {
+    if (StringUtils.areAnagrams(string1, string2)) {
 			System.out.println("Anagrams");
 		} else {
 			System.out.println("Not Anagrams");

@@ -1,7 +1,7 @@
 package com.jda.functionalprograms;
 
+import com.jda.utility.Printer;
 import com.jda.utility.Reader;
-import com.jda.utility.Utility;
 
 public
 class Stopwatch {
@@ -11,9 +11,9 @@ class Stopwatch {
 		long start = System.currentTimeMillis();
 		doNothing(10e7);
 		long end = System.currentTimeMillis();
-		Utility.printLine("Watch started at " + start);
-		Utility.printLine("Watch stopped at " + end);
-		Utility.printLine("The time elapsed was " + (end - start) + " ms");
+    Printer.printLine("Watch started at " + start);
+    Printer.printLine("Watch stopped at " + end);
+    Printer.printLine("The time elapsed was " + (end - start) + " ms");
 	}
 
 	//  This function does nothing

@@ -1,6 +1,6 @@
 package com.jda.datastructureprograms;
 
-import com.jda.utility.Util;
+import com.jda.utility.Maths;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -9,7 +9,7 @@ class PrimeNumbers2DArray {
 
   public static
   void main(String[] args) {
-    ArrayList<Integer> primes = Util.primesUpto(1000);
+    ArrayList<Integer> primes = Maths.primesUpto(1000);
 
     printIntArrayExceptZeros(primes);
   }

@@ -1,7 +1,7 @@
 package com.jda.datastructureprograms;
 
 import com.jda.datastructures.Queue;
-import com.jda.utility.Util.Calendar.DayOfWeek;
+import com.jda.utility.Enums.DayOfWeek;
 
 class WeekDay {
 

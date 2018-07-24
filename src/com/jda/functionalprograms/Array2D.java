@@ -1,7 +1,7 @@
 package com.jda.functionalprograms;
 
+import com.jda.utility.Printer;
 import com.jda.utility.Reader;
-import com.jda.utility.Utility;
 
 public
 class Array2D {
@@ -9,17 +9,17 @@ class Array2D {
   public static
   void main(String[] args) {
     Reader reader = new Reader();
-    Utility.printLine("Let's create a 2D array.");
-    Utility.printLine("Enter the number of rows");
+    Printer.printLine("Let's create a 2D array.");
+    Printer.printLine("Enter the number of rows");
     int rows = reader.readInteger();
-    Utility.printLine("Enter the number of columns.");
+    Printer.printLine("Enter the number of columns.");
     int columns = reader.readInteger();
 
-    Utility.printLine("Enter the array");
+    Printer.printLine("Enter the array");
     int[][] array = reader.readIntegerArray(rows, columns);
     Integer[][] objArray = getIntegers(rows, columns, array);
-    Utility.printLine("The array you input is as follows.");
-    Utility.printArray(objArray, rows, columns);
+    Printer.printLine("The array you input is as follows.");
+    Printer.printArray(objArray, rows, columns);
   }
 
   private static

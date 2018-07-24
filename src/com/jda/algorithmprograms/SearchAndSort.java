@@ -7,10 +7,10 @@
  *******************************************************************/
 package com.jda.algorithmprograms;
 
+import com.jda.utility.Printer;
 import com.jda.utility.Reader;
-import com.jda.utility.Util.Stopwatch;
-import com.jda.utility.Utility;
-import com.jda.utility.Utility.Sorting;
+import com.jda.utility.Sorting;
+import com.jda.utility.Stopwatch;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,31 +21,31 @@ class SearchAndSort {
   void main(String[] args) {
     Reader reader = new Reader();
     SearchAndSort programs = new SearchAndSort();
-    Utility.printLine("What do you want to enter?");
-    Utility.printLine("s : Strings \t i : Integers");
+    Printer.printLine("What do you want to enter?");
+    Printer.printLine("s : Strings \t i : Integers");
     char ch = reader.readString().toLowerCase().charAt(0);
-    Utility.printLine("How many of them?");
+    Printer.printLine("How many of them?");
     int n = reader.readInteger();
 
     switch (ch) {
       case 's':
         ArrayList<String> strings = new ArrayList<>();
-        Utility.printLine("Enter " + n + " strings");
+        Printer.printLine("Enter " + n + " strings");
 
         for (int i = 0; i < n; i++) {
           strings.add(reader.readString());
         }
-        Utility.printLine("What do you want to search for?");
+        Printer.printLine("What do you want to search for?");
         String stringToSearch = reader.readString();
         programs.searchAndSort(strings, stringToSearch);
         break;
       case 'i':
         ArrayList<Integer> integers = new ArrayList<>();
-        Utility.printLine("Enter " + n + " integers");
+        Printer.printLine("Enter " + n + " integers");
         for (int i = 0; i < n; i++) {
           integers.add(reader.readInteger());
         }
-        Utility.printLine("What do you want to search for?");
+        Printer.printLine("What do you want to search for?");
         Integer integerToSearch = reader.readInteger();
         programs.searchAndSort(integers, integerToSearch);
         break;

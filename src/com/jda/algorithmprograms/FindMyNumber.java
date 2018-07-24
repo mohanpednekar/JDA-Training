@@ -7,8 +7,9 @@
  *******************************************************************/
 package com.jda.algorithmprograms;
 
-import com.jda.utility.Util;
-import com.jda.utility.Utility;
+import com.jda.utility.Games;
+import com.jda.utility.Maths;
+import com.jda.utility.Printer;
 
 public
 class FindMyNumber {
@@ -19,9 +20,9 @@ class FindMyNumber {
   public static
   void main(String[] args) {
     int N = Integer.parseInt(args[0]);
-    Utility.printLine("Think of a number between 0 and " + (N - 1));
-    int n = Util.log2(N);
-    int guessed = Util.guess(0, N - 1, n);
+    Printer.printLine("Think of a number between 0 and " + (N - 1));
+    int n = Maths.log2(N);
+    int guessed = Games.guess(0, N - 1, n);
     if (guessed < 0) {
       System.out.println("I ran out of attempts :(");
     } else {

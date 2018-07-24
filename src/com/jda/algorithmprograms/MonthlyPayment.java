@@ -1,6 +1,6 @@
 package com.jda.algorithmprograms;
 
-import com.jda.utility.Util;
+import com.jda.utility.Maths;
 
 public
 class MonthlyPayment {
@@ -11,6 +11,6 @@ class MonthlyPayment {
     double y = Double.parseDouble(args[1]);
     double r = Double.parseDouble(args[2]);
 
-    System.out.println("Monthly payment = " + Util.monthlyPayment(p, y, r));
+    System.out.println("Monthly payment = " + Maths.monthlyPayment(p, y, r));
   }
 }

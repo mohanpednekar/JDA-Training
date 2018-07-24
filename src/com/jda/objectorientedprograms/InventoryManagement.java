@@ -1,9 +1,10 @@
+/*
 package com.jda.objectorientedprograms;
 
 import com.jda.objectorientedprograms.classes.Product;
 import com.jda.utility.Constants;
+import com.jda.utility.Printer;
 import com.jda.utility.Reader;
-import com.jda.utility.Util;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,7 +85,7 @@ class InventoryManagement {
   private static
   void updateJson(HashMap<String, ArrayList<Product>> inventoryMap) {
     StringBuilder jsonString = createJsonString(inventoryMap);
-    Util.printToFile(OUTPUT, jsonString);
+    Printer.printToFile(OUTPUT, jsonString);
     for (String key : inventoryMap.keySet()) {
       System.out.println(key + " is worth " + calculateValueOf(inventoryMap.get(key)));
     }
@@ -107,7 +108,7 @@ class InventoryManagement {
     while (iterator.hasNext()) {
       String key = (String) iterator.next();
       jsonString.append("\"").append(key).append("\" : ")
-          .append(Util.createJSONFromArray(inventoryMap.get(key)));
+          .append(Printer.createJSONFromArray(inventoryMap.get(key)));
       if (iterator.hasNext()) { jsonString.append(", "); }
     }
     jsonString.append("}");
@@ -119,3 +120,4 @@ class InventoryManagement {
     return products.stream().mapToLong(Product::findValue).sum();
   }
 }
+*/
