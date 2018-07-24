@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.jda.objectorientedprograms.classes.Product;
 import com.jda.utility.Constants;
+import com.jda.utility.Printer;
 import com.jda.utility.Reader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -30,7 +31,7 @@ class InventoryUsingGson {
     } catch (FileNotFoundException e) {
       System.out.println("Something went wrong");
     }
-    System.out.println(gson.toJson(inventory));
+    Printer.printToFile(OUTPUT, gson.toJson(inventory));
     inventory.forEach((key, item) -> System.out.println(key + " " + calculateValueOf(item)));
 
     System.out.println("Enter a to add, r to remove, q to quit");
@@ -47,6 +48,7 @@ class InventoryUsingGson {
           break;
         default:
           choice = 'q';
+          Printer.printToFile(OUTPUT, gson.toJson(inventory));
       }
     } while (choice != 'q');
   }

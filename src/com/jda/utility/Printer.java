@@ -3,23 +3,9 @@ package com.jda.utility;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Collection;
-import java.util.Iterator;
 
 public
 class Printer {
-
-  public static
-  StringBuilder createJSONFromArray(Collection products) {
-    StringBuilder jsonArrayString = new StringBuilder();
-    jsonArrayString.append('[');
-    Iterator iterator = products.iterator();
-    while (iterator.hasNext()) {
-      jsonArrayString.append(iterator.next());
-      if (iterator.hasNext()) { jsonArrayString.append(", "); }
-    }
-    jsonArrayString.append(']');
-    return jsonArrayString;
-  }
 
   public static
   <T> void printArray(T[][] array, int rows, int columns) {
