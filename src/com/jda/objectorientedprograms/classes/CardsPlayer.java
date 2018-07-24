@@ -13,6 +13,12 @@ class CardsPlayer {
     cards.enqueue(card);
   }
 
+  @Override
+  public
+  String toString() {
+    return cards.toString();
+  }
+
   public
   void sort() {
     OrderedList<Card> sortedCards = new OrderedList<>();

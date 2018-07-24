@@ -15,7 +15,6 @@ class Printer {
       }
       System.out.println();
     }
-    // TODO print
   }
 
   public static

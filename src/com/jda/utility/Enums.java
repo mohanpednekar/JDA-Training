@@ -80,11 +80,16 @@ class Enums {
 
   public
   enum CardSuit {
-    SPADES, CLUBS, HEARTS, DIAMONDS;
+    SPADES('♠'), CLUBS('♣'), HEARTS('♥'), DIAMONDS('♦');
+    char symbol;
+
+    CardSuit(char symbol) {
+      this.symbol = symbol;
+    }
 
     public
     char singleChar() {
-      return name().charAt(0);
+      return symbol;
     }
   }
 

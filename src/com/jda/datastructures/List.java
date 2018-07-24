@@ -2,6 +2,7 @@ package com.jda.datastructures;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.Random;
 
 public
 class List<T> {
@@ -85,20 +86,13 @@ class List<T> {
   }
 
   public
-  T pop(int pos) {
-    Node<T> node = root;
-
-    if (pos == 0) {
-      T rootData = root.getData();
-      root = null;
-      return rootData;
+  void shuffle() {
+    Random random = new Random();
+    int bound = size();
+    for (int i = 0; i < (bound * 100); i++) {
+      T item = pop(random.nextInt(bound));
+      root = new Node<>(item, root);
     }
-    for (int i = 1; i < pos; i++) {
-      node = node.getNext();
-    }
-    Node<T> nextNode = node.getNext();
-    node.setNext(nextNode.getNext());
-    return nextNode.getData();
   }
 
   public
@@ -109,5 +103,22 @@ class List<T> {
       node = node.getNext();
     }
     return false;
+  }
+
+  public
+  T pop(int pos) {
+    Node<T> node = root;
+
+    if (pos == 0) {
+      T rootData = root.getData();
+      root = root.getNext();
+      return rootData;
+    }
+    for (int i = 1; i < pos; i++) {
+      node = node.getNext();
+    }
+    Node<T> nextNode = node.getNext();
+    node.setNext(nextNode.getNext());
+    return nextNode.getData();
   }
 }

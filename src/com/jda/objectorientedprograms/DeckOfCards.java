@@ -13,25 +13,30 @@ class DeckOfCards {
 
   public static
   void main(String[] args) {
-    ArrayList<Card> cards = new ArrayList<>();
-    for (CardSuit suit : CardSuit.values()) {
-      for (CardValue value : CardValue.values()) {
-        cards.add(new Card(suit, value));
-      }
-    }
+    ArrayList<Card> deck = createDeck();
 
-    Collections.shuffle(cards);
+    Collections.shuffle(deck);
     ArrayList<CardsPlayer> players = new ArrayList<>();
     for (int i = 0; i < 4; i++) { players.add(new CardsPlayer()); }
     Card[][] cardsArray = new Card[4][9];
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 4; j++) {
-        Card card = cards.remove(0);
+        Card card = deck.remove(0);
         players.get(j).receiveCard(card);
         cardsArray[j][i] = card;
       }
     }
     Printer.printArray(cardsArray, 4, 9);
+  }
 
+  static
+  ArrayList<Card> createDeck() {
+    ArrayList<Card> deck = new ArrayList<>();
+    for (CardSuit suit : CardSuit.values()) {
+      for (CardValue value : CardValue.values()) {
+        deck.add(new Card(suit, value));
+      }
+    }
+    return deck;
   }
 }
