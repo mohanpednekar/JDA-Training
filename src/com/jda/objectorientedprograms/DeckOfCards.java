@@ -4,6 +4,7 @@ import com.jda.objectorientedprograms.classes.Card;
 import com.jda.objectorientedprograms.classes.CardsPlayer;
 import com.jda.utility.Enums.CardSuit;
 import com.jda.utility.Enums.CardValue;
+import com.jda.utility.Printer;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -20,13 +21,17 @@ class DeckOfCards {
     }
 
     Collections.shuffle(cards);
-    CardsPlayer[] players = new CardsPlayer[4];
+    ArrayList<CardsPlayer> players = new ArrayList<>();
+    for (int i = 0; i < 4; i++) { players.add(new CardsPlayer()); }
+    Card[][] cardsArray = new Card[4][9];
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 4; j++) {
-        players[j].receiveCard(cards.remove(0));
+        Card card = cards.remove(0);
+        players.get(j).receiveCard(card);
+        cardsArray[j][i] = card;
       }
     }
+    Printer.printArray(cardsArray, 4, 9);
 
-    Card[][] cardsArray = new Card[4][9];
   }
 }

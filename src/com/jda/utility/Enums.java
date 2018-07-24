@@ -80,7 +80,12 @@ class Enums {
 
   public
   enum CardSuit {
-    SPADES, CLUBS, HEARTS, DIAMONDS
+    SPADES, CLUBS, HEARTS, DIAMONDS;
+
+    public
+    char singleChar() {
+      return name().charAt(0);
+    }
   }
 
   public
@@ -89,6 +94,13 @@ class Enums {
 
     int faceValue() {
       return ordinal() + 2;
+    }
+
+    public
+    char singleChar() {
+      if (faceValue() < 10) { return Character.forDigit(ordinal(), 10); }
+      if (faceValue() == 10) { return 'X'; }
+      return name().charAt(0);
     }
   }
 }
