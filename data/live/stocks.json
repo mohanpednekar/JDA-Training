@@ -4,5 +4,11 @@
     "name": "Tata Motors",
     "shares": 990.0,
     "price": 300.0
+  },
+  {
+    "symbol": "RELI",
+    "name"  : "Reliance Infocomm",
+    "shares": 342.7,
+    "price" : 432.6
   }
 ]
