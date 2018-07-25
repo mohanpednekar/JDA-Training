@@ -1,20 +1,30 @@
 package com.jda.utility;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public
-class Reader {
+import com.google.gson.Gson;
+
+public class Reader {
+
+  public static <T> ArrayList<T> readArrayListFromFile(Gson gson, Type type, String file) {
+    java.io.Reader reader = null;
+    try {
+      reader = new BufferedReader(new FileReader(file));
+    } catch (FileNotFoundException e) {
+      System.out.println("File not Found");;
+    }
+    return gson.fromJson(reader, type);
+  }
 
   private Scanner scanner;
 
-  public
-  Reader() {
+  public Reader() {
     scanner = new Scanner(System.in);
-  }
-
-  public
-  double readDouble() {
-    return scanner.nextDouble();
   }
 
   /**
@@ -22,19 +32,20 @@ class Reader {
    * @param negative
    * @return
    */
-  public
-  boolean readBoolean(String positive, String negative) {
+  public boolean readBoolean(String positive, String negative) {
     return scanner.next().toLowerCase().startsWith(positive);
   }
 
+  public double readDouble() {
+    return scanner.nextDouble();
+  }
+
   // reads an integer from input stream
-  public
-  int readInteger() {
+  public int readInteger() {
     return scanner.nextInt();
   }
 
-  public
-  int[] readIntegerArray(int size) {
+  public int[] readIntegerArray(int size) {
     int[] array = new int[size];
     for (int i = 0; i < size; i++) {
       array[i] = scanner.nextInt();
@@ -42,8 +53,7 @@ class Reader {
     return array;
   }
 
-  public
-  int[][] readIntegerArray(int rows, int columns) {
+  public int[][] readIntegerArray(int rows, int columns) {
     int[][] array = new int[rows][columns];
     for (int i = 0; i < rows; i++) {
       for (int j = 0; j < columns; j++) {
@@ -53,6 +63,14 @@ class Reader {
     return array;
   }
 
+  public String readLine() {
+    return scanner.nextLine();
+  }
+
+  public long readLong() {
+    return Long.parseLong(scanner.next());
+  }
+
   /*
    * // reads a line from input stream delimited by newline characters public
    * String readLine() { return scanner.nextLine(); } // reads a real number
@@ -60,18 +78,7 @@ class Reader {
    * scanner.nextDouble(); }
    */
   // reads a string from input stream delimited by any whitespace
-  public
-  String readString() {
+  public String readString() {
     return scanner.next();
-  }
-
-  public
-  String readLine() {
-    return scanner.nextLine();
-  }
-
-  public
-  long readLong() {
-    return Long.parseLong(scanner.next());
   }
 }

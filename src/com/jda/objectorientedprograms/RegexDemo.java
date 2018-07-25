@@ -15,6 +15,7 @@ class RegexDemo {
   public static
   void main(String[] args) {
     String message = null;
+    
 
     try {
       message = new String(Files.readAllBytes(Paths.get(INPUT)));

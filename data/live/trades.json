@@ -1,0 +1,11 @@
+[
+  {
+    "ref": 1,
+    "customerId": 1,
+    "symbol": "TELCO",
+    "tradeType": "BUY",
+    "amount": 3000.0,
+    "shares": 10.0,
+    "timestamp": 1532501170287
+  }
+]

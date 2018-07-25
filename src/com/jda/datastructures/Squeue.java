@@ -1,31 +1,31 @@
 package com.jda.datastructures;
 
-public
-class Squeue<T> extends Queue<T> {
+public class Squeue<T> extends Queue<T> {
 
-  Stack<T> main = new Stack<>();
+  Stack<T> main     = new Stack<>();
   Stack<T> assitant = new Stack<>();
 
-  public
-  void enqueue(T item) {
+  @Override
+  public T dequeue() {
+    transferAll(main, assitant);
+    return assitant.pop();
+  }
+  
+  @Override
+  public void enqueue(T item) {
+    transferAll(assitant, main);
     main.push(item);
   }
 
-  public
-  T dequeue() {
-    while (!main.isEmpty()) {
-      assitant.push(main.pop());
-    }
-    T item = assitant.pop();
-    while (!assitant.isEmpty()) {
-      main.push(assitant.pop());
-    }
-    return item;
-  }
-
   @Override
-  public
-  boolean isEmpty() {
+  public boolean isEmpty() {
+    transferAll(assitant, main);
     return main.isEmpty();
+  }
+  
+  private void transferAll(Stack<T> fromStack, Stack<T> toStack) {
+    while (!fromStack.isEmpty()) {
+      toStack.push(fromStack.pop());
+    }
   }
 }

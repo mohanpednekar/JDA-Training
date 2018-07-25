@@ -1,25 +1,27 @@
 package com.jda.objectorientedprograms.classes;
 
-import org.json.simple.JSONObject;
-
-public
-class Stock {
-
+public class Stock {
+  private String symbol;
   private String name;
-  private long number;
+  private double shares;
   private double price;
-
-  public
-  Stock(JSONObject jsonObject) {
-    name = (String) jsonObject.get("name");
-    number = (long) jsonObject.get("number");
-    price = (double) jsonObject.get("price");
+  
+  public double findValue() {
+    return shares * price;
   }
 
-  public
-  double findValue() {
-    double value = number * price;
-    System.out.println("Value of " + name + " is " + value);
-    return value;
+  public String getSymbol() {
+    return symbol;
   }
+
+  @Override
+  public String toString() {
+    return "Stock [symbol=" + symbol + ", name=" + name + ", shares=" + shares + ", price=" + price
+        + "]";
+  }
+
+  public boolean isWorth(double amount) {
+    return findValue() > amount;
+  }
+
 }
