@@ -1,12 +1,12 @@
 package com.jda.datastructures;
 
-public
-class LinkedList<T> extends List<T> {
+import java.util.Iterator;
 
-  public
-  T get(int pos) {
+public class LinkedList<T> extends List<T> implements Iterable<T> {
+  
+  public T get(int pos) {
     Node<T> node = root;
-
+    
     if (pos == 0) {
       T rootData = root.getData();
       root = null;
@@ -17,18 +17,36 @@ class LinkedList<T> extends List<T> {
     }
     return node.getData();
   }
-
-  public
-  void add(T item) {
+  
+  public void add(T item) {
     if (root == null) {
       root = new Node<>(item);
       return;
     }
     Node<T> node = root;
-
+    
     while (node.getNext() != null) {
       node = node.getNext();
     }
     node.setNext(new Node<>(item));
+  }
+
+  @Override
+  public Iterator<T> iterator() {
+    // TODO Auto-generated method stub
+    return new Iterator<T>() {
+      
+      @Override
+      public boolean hasNext() {
+        // TODO Auto-generated method stub
+        return false;
+      }
+      
+      @Override
+      public T next() {
+        // TODO Auto-generated method stub
+        return null;
+      }
+    };
   }
 }

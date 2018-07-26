@@ -1,28 +1,23 @@
 {
   "pulses": [
     {
-      "name"      : "Quaker",
-      "weight"    : 20,
+      "name": "Quaker",
+      "weight": 20,
       "priceperkg": 20
     }
   ],
-  "wheat" : [
+  "wheat": [
     {
-      "name"      : "Ashirvad",
-      "weight"    : 50,
+      "name": "Ashirvad",
+      "weight": 50,
       "priceperkg": 3
     }
   ],
-  "rice"  : [
+  "rice": [
     {
-      "name"      : "Basmati",
-      "weight"    : 100,
+      "name": "Basmati",
+      "weight": 100,
       "priceperkg": 10
-    },
-    {
-      "name"      : "Local",
-      "weight"    : 40,
-      "priceperkg": 2
     }
   ]
 }

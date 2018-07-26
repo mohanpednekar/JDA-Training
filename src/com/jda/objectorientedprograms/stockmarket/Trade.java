@@ -1,5 +1,8 @@
 package com.jda.objectorientedprograms.stockmarket;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import com.jda.utility.Enums.TradeType;
 import com.jda.utility.Reader;
 
@@ -33,7 +36,8 @@ public class Trade extends JsonIdHolder<Long> {
   @Override
   public String toString() {
     return "T[id=" + id + ", cId=" + customerId + ", " + symbol + ", " + tradeType + ", amt="
-        + amount + ", shares=" + ((int) (100 * shares) / 100.0) + ", time=" + timestamp + "]";
+        + amount + ", shares=" + ((int) (100 * shares) / 100.0) + ", time="
+        + new SimpleDateFormat("HH:mm:ss").format(new Date(timestamp)) + "]";
   }
 
   Stock findStock(Stocks stocks) {
@@ -83,5 +87,15 @@ public class Trade extends JsonIdHolder<Long> {
         stock.increase(amount);
         break;
     }
+  }
+
+  public boolean has(Stock stock) {
+    if (stock == null) { return true; }
+    return stock.is(symbol);
+  }
+
+  public boolean has(Customer customer) {
+    if (customer == null) { return true; }
+    return customer.is(customerId);
   }
 }

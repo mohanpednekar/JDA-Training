@@ -4,13 +4,12 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Random;
 
-public
-class List<T> {
-
+public class List<T> {
+  
   Node<T> root;
-
-  public
-  String toString() {
+  
+  @Override
+  public String toString() {
     StringBuilder stringBuilder = new StringBuilder();
     Node<T> node = root;
     while (node != null) {
@@ -19,9 +18,8 @@ class List<T> {
     }
     return stringBuilder.toString().trim();
   }
-
-  public
-  T pop() {
+  
+  public T pop() {
     Node<T> node = root;
     T nodeData = node.getData();
     Node<T> nextNode = root.getNext();
@@ -36,9 +34,8 @@ class List<T> {
     node.setNext(null);
     return nextNode.getData();
   }
-
-  public
-  int index(T item) {
+  
+  public int index(T item) {
     if (root == null) { return -1; }
     Node<T> node = root;
     for (int i = 0; node != null; node = node.getNext(), i++) {
@@ -46,9 +43,8 @@ class List<T> {
     }
     return -1;
   }
-
-  public
-  int size() {
+  
+  public int size() {
     int count = 0;
     Node<T> node = root;
     while (node != null) {
@@ -57,23 +53,20 @@ class List<T> {
     }
     return count;
   }
-
-  public
-  boolean isEmpty() {
+  
+  public boolean isEmpty() {
     return root == null;
   }
-
-  public
-  void printToFile(String filePath) {
+  
+  public void printToFile(String filePath) {
     try (PrintWriter out = new PrintWriter(filePath)) {
       out.println(this);
     } catch (FileNotFoundException e) {
       System.out.println("Writing to file failed");
     }
   }
-
-  public
-  void remove(T item) {
+  
+  public void remove(T item) {
     if (root.getData().equals(item)) {
       root = root.getNext();
       return;
@@ -84,9 +77,8 @@ class List<T> {
     }
     node.setNext(node.getNext().getNext());
   }
-
-  public
-  void shuffle() {
+  
+  public void shuffle() {
     Random random = new Random();
     int bound = size();
     for (int i = 0; i < (bound * 100); i++) {
@@ -94,9 +86,8 @@ class List<T> {
       root = new Node<>(item, root);
     }
   }
-
-  public
-  boolean search(T item) {
+  
+  public boolean search(T item) {
     Node<T> node = root;
     while (node != null) {
       if (node.getData().equals(item)) { return true; }
@@ -104,11 +95,10 @@ class List<T> {
     }
     return false;
   }
-
-  public
-  T pop(int pos) {
+  
+  public T pop(int pos) {
     Node<T> node = root;
-
+    
     if (pos == 0) {
       T rootData = root.getData();
       root = root.getNext();

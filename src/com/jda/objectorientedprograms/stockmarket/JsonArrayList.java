@@ -79,4 +79,22 @@ public class JsonArrayList<T extends JsonIdHolder, G extends Comparable<G>> {
     data.remove(item);
     return true;
   }
+  //
+  // @Override
+  // public Iterator<T> iterator() {
+  // return new Iterator<T>() {
+  // int index = 0;
+  //
+  // @Override
+  // public boolean hasNext() {
+  // return false;
+  // }
+  //
+  // @Override
+  // public T next() {
+  // // TODO Auto-generated method stub
+  // return null;
+  // }
+  // };
+  // }
 }

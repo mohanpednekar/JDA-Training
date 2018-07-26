@@ -6,19 +6,19 @@ import com.jda.utility.Enums.TradeType;
 import com.jda.utility.Reader;
 
 public class StockAccount {
-
+  
   private Trades trades;
-
+  
   private Customers customers;
   private Stocks    stocks;
-
+  
   public StockAccount(String customersFile, String stocksFile, String tradesFile) {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     customers = new Customers(gson, customersFile);
     trades = new Trades(gson, tradesFile);
     stocks = new Stocks(gson, stocksFile);
   }
-
+  
   public void performOperations(String inputFormat) {
 
     Reader reader = new Reader();
@@ -43,22 +43,33 @@ public class StockAccount {
             trades.commit(sellTrade, seller, soldStock);
             writeToJson();
           }
-
           break;
         case SHOW_CUSTOMER:
           System.out.println("Enter customer id");
           Long id = reader.readLong();
           customers.display(reader, id);
           break;
-        case SHOW_CUSTOMERS:
+        case SHOW_ALL_CUSTOMERS:
           customers.showAll();
+          break;
+        case SHOW_HOLDINGS:
+          System.out.println("Enter customer id");
+          Customer customerH = customers.find(reader.readLong());
+          customerH.showHoldings();
+          break;
+        case SHOW_TRADES:
+          System.out.println("Enter customer id to filter. (0 to skip)");
+          Customer customerT = customers.find(reader.readLong());
+          System.out.println("Enter stock symbol to filter. (x to skip)");
+          Stock stockT = stocks.find(reader.readString());
+          trades.filter(customerT, stockT);
           break;
         case SHOW_STOCK:
           System.out.println("Enter stock symbol");
           String symbol = reader.readString();
           stocks.display(reader, symbol);
           break;
-        case SHOW_STOCKS:
+        case SHOW_ALL_STOCKS:
           stocks.showAll();
           break;
         case SHOW_TRADE:
@@ -66,7 +77,7 @@ public class StockAccount {
           long ref = reader.readLong();
           trades.display(reader, ref);
           break;
-        case SHOW_TRADES:
+        case SHOW_ALL_TRADES:
           trades.showAll();
           break;
         case SHOW_ALL:
@@ -108,7 +119,7 @@ public class StockAccount {
       }
     }
   }
-
+  
   private Choice getChoice(Reader reader) {
     Choice choice;
     try {
@@ -118,14 +129,14 @@ public class StockAccount {
     }
     return choice;
   }
-
+  
   private void writeToJson() {
     customers.printToFile();
     trades.printToFile();
     stocks.printToFile();
   }
-
+  
   public enum Choice {
-    BUY, SELL, SHOW_CUSTOMER, SHOW_STOCK, SHOW_TRADE, SHOW_CUSTOMERS, SHOW_STOCKS, SHOW_TRADES, SHOW_ALL, ADD_STOCK, REMOVE_STOCK, ADD_CUSTOMER, REMOVE_CUSTOMER, QUIT, ERROR
+    BUY, SELL, SHOW_CUSTOMER, SHOW_STOCK, SHOW_TRADE, SHOW_ALL_CUSTOMERS, SHOW_HOLDINGS, SHOW_TRADES, SHOW_ALL_STOCKS, SHOW_ALL_TRADES, SHOW_ALL, ADD_STOCK, REMOVE_STOCK, ADD_CUSTOMER, REMOVE_CUSTOMER, QUIT, ERROR
   }
 }

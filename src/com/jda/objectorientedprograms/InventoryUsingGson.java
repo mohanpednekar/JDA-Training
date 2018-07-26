@@ -1,12 +1,5 @@
 package com.jda.objectorientedprograms;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import com.jda.objectorientedprograms.classes.Product;
-import com.jda.utility.Constants;
-import com.jda.utility.Printer;
-import com.jda.utility.Reader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -14,15 +7,21 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public
-class InventoryUsingGson {
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.jda.objectorientedprograms.classes.Product;
+import com.jda.utility.Constants;
+import com.jda.utility.Printer;
+import com.jda.utility.Reader;
 
-  private static String INPUT = Constants.INPUT_PATH + "inventory.json";
-  private static String OUTPUT = Constants.OUTPUT_PATH + "inventory.json";
-
-  public static
-  void main(String[] args) {
-
+public class InventoryUsingGson {
+  
+  private static String INPUT  = Constants.INPUT_PATH + "inventory.json";
+  private static String OUTPUT = Constants.INPUT_PATH + "inventory.json";
+  
+  public static void main(String[] args) {
+    
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     Type type = new TypeToken<HashMap<String, ArrayList<Product>>>() {}.getType();
     HashMap<String, ArrayList<Product>> inventory = null;
@@ -33,7 +32,7 @@ class InventoryUsingGson {
     }
     Printer.printToFile(OUTPUT, gson.toJson(inventory));
     inventory.forEach((key, item) -> System.out.println(key + " " + calculateValueOf(item)));
-
+    
     System.out.println("Enter a to add, r to remove, q to quit");
     char choice;
     Reader reader = new Reader();
@@ -42,9 +41,11 @@ class InventoryUsingGson {
       switch (choice) {
         case 'a':
           addProductTo(inventory);
+          Printer.printToFile(OUTPUT, gson.toJson(inventory));
           break;
         case 'r':
           removeProductFrom(inventory);
+          Printer.printToFile(OUTPUT, gson.toJson(inventory));
           break;
         default:
           choice = 'q';
@@ -52,23 +53,20 @@ class InventoryUsingGson {
       }
     } while (choice != 'q');
   }
-
-  private static
-  long calculateValueOf(ArrayList<Product> products) {
+  
+  private static long calculateValueOf(ArrayList<Product> products) {
     return products.stream().mapToLong(Product::findValue).sum();
   }
-
-  private static
-  void addProductTo(HashMap<String, ArrayList<Product>> inventory) {
+  
+  private static void addProductTo(HashMap<String, ArrayList<Product>> inventory) {
     System.out.println("What do you want to add to inventory");
     Reader reader = new Reader();
     String item = reader.readLine();
     inventory.putIfAbsent(item, new ArrayList<>());
     inventory.get(item).add(new Product(reader));
   }
-
-  private static
-  void removeProductFrom(HashMap<String, ArrayList<Product>> inventory) {
+  
+  private static void removeProductFrom(HashMap<String, ArrayList<Product>> inventory) {
     System.out.println("What do you want to remove from inventory");
     Reader reader = new Reader();
     String item = reader.readLine();
@@ -81,9 +79,14 @@ class InventoryUsingGson {
     String productName = reader.readLine();
     Product productToRemove = null;
     for (Product product : itemToRemove) {
-      if (product.getName().equals(productName)) { productToRemove = product; }
+      if (product.getName().equals(productName)) {
+        productToRemove = product;
+      }
     }
-    if (productToRemove == null) { System.out.println("This item doesn't exist"); }
-    else { itemToRemove.remove(productToRemove); }
+    if (productToRemove == null) {
+      System.out.println("This item doesn't exist");
+    } else {
+      itemToRemove.remove(productToRemove);
+    }
   }
 }
