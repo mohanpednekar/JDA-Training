@@ -1,20 +1,16 @@
 package com.jda.objectorientedprograms.stockmarket;
 
-import com.google.gson.annotations.SerializedName;
 import com.jda.utility.Enums.TradeType;
 import com.jda.utility.Reader;
 
-public
-class Trade extends JsonIdHolder<Long> {
+public class Trade extends JsonIdHolder<Long> {
 
-  @SerializedName("ref")
-  private Long id;
-  private long customerId;
-  private String symbol;
+  private long      customerId;
+  private String    symbol;
   private TradeType tradeType;
-  private double amount;
-  private double shares;
-  private long timestamp;
+  private double    amount;
+  private double    shares;
+  private long      timestamp;
 
   Trade(Reader reader, TradeType tradeType) {
     System.out.println("Enter customer id, stock symbol and amount of money (separated by spaces)");
@@ -26,22 +22,18 @@ class Trade extends JsonIdHolder<Long> {
   }
 
   @Override
-  public
-  Long getId() {
+  public Long getId() {
     return id;
   }
 
-  public
-  void setId(Long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
   @Override
-  public
-  String toString() {
-    return "Trade [id=" + id + ", customerId=" + customerId + ", symbol=" + symbol + ", tradeType="
-        + tradeType + ", amount=" + amount + ", shares=" + shares + ", timestamp=" + timestamp
-        + "]";
+  public String toString() {
+    return "T[id=" + id + ", cId=" + customerId + ", " + symbol + ", " + tradeType + ", amt="
+        + amount + ", shares=" + ((int) (100 * shares) / 100.0) + ", time=" + timestamp + "]";
   }
 
   Stock findStock(Stocks stocks) {
@@ -49,20 +41,31 @@ class Trade extends JsonIdHolder<Long> {
     if (stock != null) {
       if (tradeType == TradeType.SELL) {
         return stock;
-      }
-      else if (stock.isWorth(amount)) { return stock; }
+      } else if (stock.isWorth(amount)) { return stock; }
     }
     return null;
   }
 
   Customer findCustomer(Customers customers, Stock stock) {
     Customer customer = customers.find(customerId);
+    if (customer == null) {
+      System.out.println("Customer not found.");
+      return null;
+    }
     switch (tradeType) {
       case BUY:
-        if ((customer != null) && customer.canAfford(amount)) { return customer; }
+        if (customer.canAfford(amount)) {
+          return customer;
+        } else {
+          System.out.println("Insufficient balance");
+        }
         break;
       case SELL:
-        if ((customer != null) && customer.has(shares, stock)) { return customer; }
+        if (customer.has(shares, stock)) {
+          return customer;
+        } else {
+          System.out.println("Insufficient shares");
+        }
     }
     return null;
   }

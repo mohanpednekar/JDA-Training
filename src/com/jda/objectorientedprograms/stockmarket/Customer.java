@@ -1,16 +1,12 @@
 package com.jda.objectorientedprograms.stockmarket;
 
-import com.google.gson.annotations.SerializedName;
 import com.jda.utility.Reader;
 
-public
-class Customer extends JsonIdHolder<Long> {
+public class Customer extends JsonIdHolder<Long> {
 
-  @SerializedName("custId")
-  private Long id;
   private String name;
   private String surname;
-  private long mobile;
+  private long   mobile;
   private double balance;
   private Stocks holdings;
 
@@ -20,11 +16,11 @@ class Customer extends JsonIdHolder<Long> {
     surname = reader.readString();
     mobile = reader.readLong();
     balance = reader.readDouble();
+    holdings = new Stocks();
   }
 
   @Override
-  public
-  Long getId() {
+  public Long getId() {
     return id;
   }
 
@@ -33,10 +29,9 @@ class Customer extends JsonIdHolder<Long> {
   }
 
   @Override
-  public
-  String toString() {
-    return "Customer{" + "id=" + id + ", name='" + name + '\'' + ", surname='" + surname + '\''
-        + ", mobile=" + mobile + ", balance=" + balance + ", holdings=" + holdings + '}';
+  public String toString() {
+    return "C{" + "id=" + id + ", '" + name + " " + surname + ", " + mobile + ", bal=" + balance
+        + '}';
   }
 
   boolean has(double shares, Stock stockToSell) {
@@ -45,12 +40,14 @@ class Customer extends JsonIdHolder<Long> {
   }
 
   boolean canAfford(double amount) {
-    return balance > amount;
+    return balance >= amount;
   }
 
   void buy(Stock stock) {
-    if (holdings == null) { holdings = new Stocks(); }
-    holdings.add(stock);
+    if (holdings == null) {
+      holdings = new Stocks();
+    }
+    holdings.purchase(stock);
     balance -= stock.findValue();
   }
 

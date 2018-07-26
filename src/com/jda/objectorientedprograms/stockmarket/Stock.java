@@ -1,13 +1,9 @@
 package com.jda.objectorientedprograms.stockmarket;
 
-import com.google.gson.annotations.SerializedName;
 import com.jda.utility.Reader;
 
-public
-class Stock extends JsonIdHolder<String> {
+public class Stock extends JsonIdHolder<String> {
 
-  @SerializedName("symbol")
-  private String id;
   private String name;
   private double shares;
   private double price;
@@ -29,28 +25,24 @@ class Stock extends JsonIdHolder<String> {
   }
 
   @Override
-  public
-  String getId() {
+  public String getId() {
     return id;
   }
 
-  public
-  void setId(String id) {
+  public void setId(String id) {
     this.id = id;
   }
 
   @Override
-  public
-  String toString() {
-    return "Stock [id=" + id + ", name=" + name + ", shares=" + shares + ", price=" + price + "]";
+  public String toString() {
+    return "S [id=" + id + ", " + name + ", shares=" + shares + ", price=" + price + "]";
   }
 
   boolean isWorth(double amount) {
     return findValue() >= amount;
   }
 
-  public
-  double findValue() {
+  public double findValue() {
     return shares * price;
   }
 
