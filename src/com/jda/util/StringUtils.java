@@ -67,7 +67,7 @@ public class StringUtils {
   
   // appends an ordinal suffix to the number
   public static String ordinal(int n) {
-    if (n % 100 > 10 && n % 100 < 20) { return n + "th"; }
+    if (((n % 100) > 10) && ((n % 100) < 20)) { return n + "th"; }
     switch (n % 10) {
       case 1:
         return n + "st";
@@ -103,5 +103,10 @@ public class StringUtils {
       System.out.println("Reading file failed");
       return null;
     }
+  }
+
+  public static String titleCase(String string) {
+    if (string.length() < 2) { return string.toUpperCase(); }
+    return string.toUpperCase().charAt(0) + string.substring(1).toLowerCase();
   }
 }

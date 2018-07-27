@@ -7,20 +7,15 @@ import com.google.gson.reflect.TypeToken;
 import com.jda.util.Reader;
 
 public class Stocks extends JsonArrayList<Stock, String> {
-  
+
   Stocks(Gson gson, String file) {
     super(gson, file);
-    data = Reader.readArrayListFromFile(gson, new TypeToken<ArrayList<Stock>>() {}.getType(), file);
+    ArrayList<Stock> stocksArray = Reader.readArrayListFromFile(gson,
+        new TypeToken<ArrayList<Stock>>() {}.getType(), file);
+    stocksArray.forEach(data::add);
   }
-  
+
   Stocks() {}
-  
-  boolean have(double shares, Stock stockToSell) {
-    for (Stock stock : data) {
-      if (stock.is(stockToSell.getId()) && stock.has(shares)) { return true; }
-    }
-    return false;
-  }
   
   public boolean add(Stock stock) {
     if (find(stock.getId()) == null) {
@@ -32,19 +27,4 @@ public class Stocks extends JsonArrayList<Stock, String> {
     return false;
   }
   
-  public void remove(Stock stock) {
-    data.remove(stock);
-  }
-  
-  boolean soldAll(Stock stock) {
-    return data.stream().anyMatch(holding -> holding.is(stock.getId()) && holding.reduce(stock));
-  }
-  
-  public void purchase(Stock stock) {
-    if (find(stock.getId()) == null) {
-      data.add(stock);
-    } else {
-      find(stock.getId()).increase(stock.findValue());
-    }
-  }
 }

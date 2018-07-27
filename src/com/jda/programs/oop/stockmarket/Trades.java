@@ -7,10 +7,12 @@ import com.google.gson.reflect.TypeToken;
 import com.jda.util.Reader;
 
 class Trades extends JsonArrayList<Trade, Long> {
-  
+
   Trades(Gson gson, String file) {
     super(gson, file);
-    data = Reader.readArrayListFromFile(gson, new TypeToken<ArrayList<Trade>>() {}.getType(), file);
+    ArrayList<Trade> tradesArray = Reader.readArrayListFromFile(gson,
+        new TypeToken<ArrayList<Trade>>() {}.getType(), file);
+    tradesArray.forEach(data::add);
     maxId = findHighestId();
   }
   

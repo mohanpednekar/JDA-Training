@@ -1,7 +1,7 @@
 package com.jda.util.ds;
 
-public class Queue<T> extends List<T> {
-  
+public class Queue<T> extends LinkedList<T> {
+
   public void enqueue(T item) {
     if (root == null) {
       root = new Node<>(item);
@@ -13,7 +13,7 @@ public class Queue<T> extends List<T> {
     }
     node.setNext(new Node<>(item));
   }
-  
+
   public T dequeue() {
     Node<T> node = root;
     root = root.getNext();

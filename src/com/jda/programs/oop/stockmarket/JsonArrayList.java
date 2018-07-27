@@ -3,15 +3,17 @@ package com.jda.programs.oop.stockmarket;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
+import com.jda.util.Constants;
 import com.jda.util.Printer;
 import com.jda.util.Reader;
+import com.jda.util.ds.LinkedList;
 
-public class JsonArrayList<T extends JsonIdHolder, G extends Comparable<G>> {
+public class JsonArrayList<T extends JsonIdHolder<G>, G extends Comparable<G>> {
   
-  Long         maxId;
-  Gson         gson;
-  String       file;
-  ArrayList<T> data;
+  Long          maxId;
+  Gson          gson;
+  String        file;
+  LinkedList<T> data = new LinkedList<>();
   
   JsonArrayList(Gson gson, String file) {
     this.gson = gson;
@@ -19,7 +21,7 @@ public class JsonArrayList<T extends JsonIdHolder, G extends Comparable<G>> {
   }
   
   JsonArrayList() {
-    data = new ArrayList<>();
+    data = new LinkedList<>();
   }
   
   Long findHighestId() {
@@ -33,7 +35,10 @@ public class JsonArrayList<T extends JsonIdHolder, G extends Comparable<G>> {
   }
   
   void printToFile() {
-    Printer.printToFile(file, gson.toJson(data));
+    ArrayList<T> array = new ArrayList<>();
+    data.forEach(array::add);
+    Printer.printToFile(file, gson.toJson(array));
+    System.out.println("Modified " + file.substring(Constants.LIVE_PATH.length()));
   }
   
   public boolean isEmpty() {
@@ -67,7 +72,10 @@ public class JsonArrayList<T extends JsonIdHolder, G extends Comparable<G>> {
   }
   
   void showAll() {
-    data.forEach(System.out::println);
+    for (T datum : data) {
+      System.out.println(datum);
+    }
+    // data.forEach(System.out::println);
   }
   
   public boolean remove(G id) {

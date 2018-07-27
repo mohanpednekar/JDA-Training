@@ -6,26 +6,25 @@ import com.jda.util.Enums.TradeType;
 import com.jda.util.Reader;
 
 public class StockAccount {
-  
-  private Trades trades;
-  
+
+  private Trades    trades;
   private Customers customers;
   private Stocks    stocks;
-  
+
   public StockAccount(String customersFile, String stocksFile, String tradesFile) {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     customers = new Customers(gson, customersFile);
     trades = new Trades(gson, tradesFile);
     stocks = new Stocks(gson, stocksFile);
   }
-  
+
   public void performOperations(String inputFormat) {
-    
+
     Reader reader = new Reader();
     boolean stillWorking = true;
     while (stillWorking) {
       switch (getChoice(reader)) {
-        
+
         case BUY:
           Trade buyTrade = new Trade(reader, TradeType.BUY);
           Stock boughtStock = buyTrade.findStock(stocks);
@@ -112,31 +111,32 @@ public class StockAccount {
           break;
         case QUIT:
           stillWorking = false;
+          System.out.println("Bye!");
           break;
-        case ERROR:
+        case HELP:
           System.out.println(inputFormat);
           break;
       }
     }
   }
-  
+
   private Choice getChoice(Reader reader) {
     Choice choice;
     try {
       choice = Choice.valueOf(reader.readLine().trim().toUpperCase().replaceAll(" ", "_"));
     } catch (Exception e) {
-      return Choice.ERROR;
+      return Choice.HELP;
     }
     return choice;
   }
-  
+
   private void writeToJson() {
     customers.printToFile();
     trades.printToFile();
     stocks.printToFile();
   }
-  
+
   public enum Choice {
-    BUY, SELL, SHOW_CUSTOMER, SHOW_STOCK, SHOW_TRADE, SHOW_ALL_CUSTOMERS, SHOW_HOLDINGS, SHOW_TRADES, SHOW_ALL_STOCKS, SHOW_ALL_TRADES, SHOW_ALL, ADD_STOCK, REMOVE_STOCK, ADD_CUSTOMER, REMOVE_CUSTOMER, QUIT, ERROR
+    BUY, SELL, SHOW_CUSTOMER, SHOW_STOCK, SHOW_TRADE, SHOW_ALL_CUSTOMERS, SHOW_HOLDINGS, SHOW_TRADES, SHOW_ALL_STOCKS, SHOW_ALL_TRADES, SHOW_ALL, ADD_STOCK, REMOVE_STOCK, ADD_CUSTOMER, REMOVE_CUSTOMER, QUIT, HELP
   }
 }

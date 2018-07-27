@@ -88,5 +88,32 @@
     "shares": 6.934812760055478,
     "timestamp": 1532602252729,
     "id": 10
+  },
+  {
+    "customerId": 2,
+    "symbol": "TELCO",
+    "tradeType": "BUY",
+    "amount": 3000.0,
+    "shares": 10.0,
+    "timestamp": 1532684925190,
+    "id": 11
+  },
+  {
+    "customerId": 3,
+    "symbol": "RELI",
+    "tradeType": "BUY",
+    "amount": 3050.0,
+    "shares": 7.05039297272307,
+    "timestamp": 1532685261365,
+    "id": 12
+  },
+  {
+    "customerId": 3,
+    "symbol": "RELI",
+    "tradeType": "SELL",
+    "amount": 1000.0,
+    "shares": 2.311604253351826,
+    "timestamp": 1532685427647,
+    "id": 13
   }
 ]

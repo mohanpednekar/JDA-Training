@@ -1,13 +1,13 @@
 [
   {
     "name": "Tata Motors",
-    "shares": 1000.0,
+    "shares": 990.0,
     "price": 300.0,
     "id": "TELCO"
   },
   {
     "name": "Reliance Infocomm",
-    "shares": 334.540036985668,
+    "shares": 329.8012482662968,
     "price": 432.6,
     "id": "RELI"
   },
